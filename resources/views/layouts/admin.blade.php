@@ -65,6 +65,16 @@
             </a>
         </li>
 
+        <hr class="sidebar-divider">
+
+        <!-- Nav Item - Providers -->
+        <li class="nav-item {{ Nav::isRoute('proveedor') }}">
+            <a class="nav-link" href="{{ route('proveedor') }}">
+                <i class="far fa-address-book"></i>
+                <span>{{ __('Proveedor') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
