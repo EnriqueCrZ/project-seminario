@@ -32,10 +32,37 @@
                     <div class="form-group">
                         <label for="provider_address">Dirección</label>
                         <input class="form-control String" type="text" name="provider_address" id="provider_address"
-                               value="{{old('codigo_empleado')}}" required="required"
+                               value="{{old('provider_address')}}" required="required"
                         >
-                        @if($errors->has('codigo_empleado'))
-                            <p class="text-danger">{{$errors->first('codigo_empleado')}}</p>
+                        @if($errors->has('provider_address'))
+                            <p class="text-danger">{{$errors->first('provider_address')}}</p>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input class="form-control String" type="email" name="email" id="email"
+                               value="{{old('email')}}" required="required"
+                        >
+                        @if($errors->has('email'))
+                            <p class="text-danger">{{$errors->first('email')}}</p>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="nit">NIT</label>
+                        <input class="form-control String" type="text" name="nit" id="email"
+                               value="{{old('nit')}}" required="required"
+                        >
+                        @if($errors->has('nit'))
+                            <p class="text-danger">{{$errors->first('nit')}}</p>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="telefono">Telefono</label>
+                        <input class="form-control String" type="text" name="telefono" id="telefono"
+                               value="{{old('telefono')}}" required="required"
+                        >
+                        @if($errors->has('telefono'))
+                            <p class="text-danger">{{$errors->first('telefono')}}</p>
                         @endif
                     </div>
                     <div>
