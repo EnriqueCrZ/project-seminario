@@ -22,6 +22,17 @@ Route::post('/proveedores/update/{proveedor}', 'Proveedores\ProveedorController@
 Route::post('/proveedores/delete/', 'Proveedores\ProveedorController@destroy')->name('proveedor.delete');
 /* Proveedor */
 
+
+/* Mantenimiento */
+Route::get('/mantenimiento', 'Mantenimiento\MantenimientoController@index')->name('mantenimiento');
+Route::get('/mantenimiento/insumos','Mantenimiento\MantenimientoController@insumos')->name('mantenimiento.insumo');
+Route::get('/mantenimiento/proximos','Mantenimiento\MantenimientoController@proximos')->name('mantenimiento.proximos');
+Route::get('/mantenimiento/estatus','Mantenimiento\MantenimientoController@estatus')->name('mantenimiento.estatus');
+
+/* Mantenimiento */
+
+
+
 // Vehiculos
 Route::get('/vehiculos', 'Vehiculos\Vehiculoscontroller@index')->name('vehiculo');
 
