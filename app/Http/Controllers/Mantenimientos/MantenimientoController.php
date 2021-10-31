@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Mantenimiento;
 
+use App\Http\Models\Maintenance;
 use App\Http\Models\Provider;
 use App\User;
 use Illuminate\Http\Request;
@@ -26,8 +27,19 @@ class MantenimientoController extends Controller
      */
     public function index()
     {
-        $mantenimiento=null;
+        $mantenimiento= Maintenance::all();
 
-        return view('mantenimiento.index', compact('mantenimiento'));
+        return view('mantenimiento.mantenimiento', compact('mantenimiento'));
+    }
+
+    public function insumos(){
+        return view('mantenimiento.insumosrespuestos');
+    }
+    public function proximos(){
+        return view('mantenimiento.proximosmantenimiento');
+    }
+
+    public function estatus(){
+        return view('mantenimiento.estatusmantenimiento');
     }
 }
