@@ -6,7 +6,7 @@
 
 
     <button type="button" class="btn btn-primary">Crear Orden de Trabajo</button>
-    <button type="button" class="btn btn-primary">Cerrar Orden de Trabajo</button>
+
     <table class="table">
         <thead>
         <tr>
@@ -18,6 +18,8 @@
             <th scope="col">Fecha de Entrega</th>
             <th scope="col">Tipo de Mantenimiento</th>
             <th scope="col">Estatus</th>
+            <th scope="col">Opciones</th>
+
         </tr>
         </thead>
         <tbody>
@@ -30,6 +32,7 @@
             <td>admin@admin.com</td>
             <td>Telefono</td>
             <td>activo</td>
+            <td><button type="button" class="btn btn-outline-danger">Finalizar</button></td>
         </tr>
         <tr>
             <th scope="row">2</th>
@@ -40,6 +43,7 @@
             <td>admin122@admin.com</td>
             <td>Telefono</td>
             <td>activo</td>
+            <td><button type="button" class="btn btn-outline-danger">Finalizar</button></td>
         </tr>
 
 
