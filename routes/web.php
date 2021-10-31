@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
     return view('home');
 })->middleware('auth');*/
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/', 'HomeController@index')->name('home');
 
@@ -27,6 +27,7 @@ Route::put('/profile', 'ProfileController@update')->name('profile.update');
 Route::get('/proveedores', 'Proveedores\ProveedorController@index')->name('proveedor');
 Route::get('/proveedores/create', 'Proveedores\ProveedorController@create')->name('proveedor.crear');
 Route::post('/proveedores/store', 'Proveedores\ProveedorController@save')->name('proveedor.store');
+Route::get('/vehiculos', 'Vehiculos\Vehiculoscontroller@index')->name('vehiculo');
 
 Route::get('/about', function () {
     return view('about');
