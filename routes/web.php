@@ -28,6 +28,7 @@ Route::get('/proveedores', 'Proveedores\ProveedorController@index')->name('prove
 Route::get('/proveedores/create', 'Proveedores\ProveedorController@create')->name('proveedor.crear');
 Route::post('/proveedores/store', 'Proveedores\ProveedorController@save')->name('proveedor.store');
 Route::get('/vehiculos', 'Vehiculos\Vehiculoscontroller@index')->name('vehiculo');
+Route::get('/vehiculos/create', 'Vehiculos\Vehiculoscontroller@create') ->name('vehiculo.crear');
 
 Route::get('/about', function () {
     return view('about');
