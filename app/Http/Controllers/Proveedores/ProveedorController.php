@@ -40,6 +40,9 @@ class ProveedorController extends Controller
         $proveedor = new Provider();
         $proveedor->provider_name = $request->provider_name;
         $proveedor->provider_address = $request->provider_address;
+        $proveedor->email = $request->email;
+        $proveedor->nit = $request->nit;
+        $proveedor->telefono = $request->telefono;
         $proveedor->user_id_user = Auth::user()->id;
         $proveedor->save();
 
