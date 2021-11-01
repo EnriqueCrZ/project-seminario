@@ -6,7 +6,7 @@
     <div class="card">
         <div class="card-header">
             <div class="col-md-12 text-secondary d-flex justify-content-center text-blue text-uppercase">
-                <h3>Agregar nuevo vehiculo</h3>
+                <h3>Editar vehiculo</h3>
             </div>
         </div>
 

@@ -4,6 +4,11 @@
 
 
 <h2>REGISTRO DE VEHICULOS</h2><br>
+<div>
+     <a href="{{route('vehiculo.crear')}}">
+         <button type="button" class="btn btn-primary">Crear</button>
+     </a>
+ </div>
 <table class="table text-center">
     <thead class="">
         <tr>
@@ -30,7 +35,7 @@
             <th>22222222222222222222222222</th>
             <th>1800</th>
             <th>Sedan</th>
-            <th><button type="button" class="btn btn-outline-info">Modificar</button></th>
+            <th><a href="{{route('vehiculo.edit')}}"><button type="button" class="btn btn-outline-info">Modificar</button></th></a>
             <th><button type="button" class="btn btn-outline-danger">Eliminar</button></th>
         </tr>
     </tbody>

@@ -34,6 +34,10 @@ class VehiculosController extends Controller
     public function create(){
         return view('vehiculos.create');
     }
+    
+    public function edit(){
+        return view('vehiculos.edit');
+    }
 }
 
 ?>
