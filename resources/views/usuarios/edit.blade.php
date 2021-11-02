@@ -6,7 +6,7 @@
 
             <div class="card-header">
                 <div class="col-md-12 text-secondary d-flex justify-content-center text-blue text-uppercase">
-                    <h3>Crear usuario</h3>
+                    <h3>Editar usuario</h3>
                 </div>
             </div>
             <div class="card-body">
@@ -24,13 +24,13 @@
                 @else
                     <p>&nbsp;</p>
                 @endif
-                <form action="{{route('usuarios.guardar')}}" method="POST" novalidate autocomplete="off">
+                <form action="{{route('usuarios.actualizar',$usuario->id)}}" method="POST" novalidate autocomplete="off">
                     @csrf
 
                     <div class="form-group">
                         <label for="name">Nombre de Usuario</label>
                         <input class="form-control String" type="text" name="name" id="name"
-                               value="{{old('name')}}" maxlength="60"
+                               value="{{old('name',$usuario->username)}}" maxlength="60"
                                required="required">
                         @if($errors->has('name'))
                             <p class="text-danger">{{$errors->first('name')}}</p>
@@ -39,25 +39,35 @@
                     <div class="form-group">
                         <label for="email">Email</label>
                         <input class="form-control String" type="email" name="email" id="email"
-                               value="{{old('email')}}" required="required"
+                               value="{{old('email',$usuario->email)}}" required="required"
                         >
                         @if($errors->has('email'))
                             <p class="text-danger">{{$errors->first('email')}}</p>
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="password">Contraseña</label>
+                        <label for="password">Contraseña Actual</label>
                         <input class="form-control " type="password" name="password" id="password"
-                               required
+
                         >
                         @if($errors->has('password'))
                             <p class="text-danger">{{$errors->first('password')}}</p>
                         @endif
                     </div>
+
                     <div class="form-group">
-                        <label for="password_confirmation">Confirmar Contraseña</label>
+                        <label for="new_password">Nueva Contraseña</label>
+                        <input class="form-control " type="password" name="new_password" id="new_password"
+
+                        >
+                        @if($errors->has('new_password'))
+                            <p class="text-danger">{{$errors->first('new_password')}}</p>
+                        @endif
+                    </div>
+                    <div class="form-group">
+                        <label for="password_confirmation">Confirmar Nueva Contraseña</label>
                         <input class="form-control String" type="password" name="password_confirmation" id="password_confirmation"
-                               required="required"
+
                         >
                         @if($errors->has('password_confirmation'))
                             <p class="text-danger">{{$errors->first('password_confirmation')}}</p>
@@ -67,13 +77,13 @@
                         <label for="tipo_usuario">Tipo de Usuario</label>
                         <select class="form-control" name="tipo_usuario" id="tipo_usuario">
                             @foreach($tipoUsuarios as $tipoUsuario)
-                                <option value="{{$tipoUsuario->id_user_type}}">{{$tipoUsuario->description}}</option>
+                                <option value="{{$tipoUsuario->id_user_type}}" @if($usuario->user_type_id_user_type == $tipoUsuario->id_user_type) selected @endif >{{$tipoUsuario->description}}</option>
                             @endforeach
                         </select>
                     </div>
 
                     <div>
-                        <button class="btn btn-primary" type="submit">Crear</button>
+                        <button class="btn btn-primary" type="submit">Actualizar</button>
                         <a href="{{ url()->previous() }}" class="btn btn-danger">Regresar</a>
                     </div>
                 </form>

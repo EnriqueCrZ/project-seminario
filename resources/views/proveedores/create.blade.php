@@ -11,12 +11,19 @@
             </div>
             <div class="card-body">
 
-                @if($errors->any())
-                    <ul>
-                        @foreach($errors->all() as $error)
-                            <li class="text-danger">{{ $error }}</li>
+                @if ( ! $errors->isEmpty() )
+                    <div class="row">
+                        @foreach ( $errors->all() as $error )
+                            <div class="col-md-6 col-md-offset-2 alert alert-danger">{{ $error }}</div>
                         @endforeach
-                    </ul @endif
+                    </div>
+                @elseif ( Session::has( 'message' ) )
+                    <div class="row">
+                        <div class="col-md-6 col-md-offset-2 alert alert-success">{{ Session::get( 'message' ) }}</div>
+                    </div>
+                @else
+                    <p>&nbsp;</p>
+                @endif
                 <form action="{{route('proveedor.store')}}" method="POST" novalidate>
                     @csrf
 

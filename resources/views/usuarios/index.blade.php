@@ -65,7 +65,7 @@
                     </td>
                 @endif
                 <td>
-                    <a href="/">
+                    <a href="{{route('usuarios.editar',$user->id)}}">
                         <button type="button" class="btn btn-outline-info"><i class="fas fa-edit"></i></button>
                     </a>
                     @if($user->is_active == 1)
