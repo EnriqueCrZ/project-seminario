@@ -8,6 +8,14 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes(['register' => false]);
 
+/*
+ * Usuarios
+ */
+Route::get('/admin/users','Usuarios\UsuarioController@index')->name('usuarios');
+Route::get('/admin/users/create','Usuarios\UsuarioController@create')->name('usuarios.crear');
+Route::post('/admin/users/store','Usuarios\UsuarioController@store')->name('usuarios.guardar');
+Route::post('/admin/users/status','Usuarios\UsuarioController@changeStatus')->name('usuarios.estatus');
+
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/profile', 'ProfileController@index')->name('profile');
