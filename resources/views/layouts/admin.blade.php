@@ -77,6 +77,14 @@
             </a>
         </li>
 
+        <!-- Nav Item - Mantenimiento -->
+        <li class="nav-item {{ Nav::isRoute('mantenimiento') }}">
+            <a class="nav-link" href="{{ route('mantenimiento') }}">
+                <i class="far fa-address-book"></i>
+                <span>{{ __('Mantenimiento') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
