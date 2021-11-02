@@ -66,6 +66,13 @@
                 <span>{{ __('Profile') }}</span>
             </a>
         </li>
+        <!-- Nav Item - Usuarios -->
+        <li class="nav-item {{ Nav::isRoute('usuarios') }}">
+            <a class="nav-link" href="{{ route('usuarios') }}">
+                <i class="fas fa-users"></i>
+                <span>{{ __('Usuarios') }}</span>
+            </a>
+        </li>
 
         <hr class="sidebar-divider">
 
@@ -110,7 +117,7 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Topbar Search -->
+               {{-- <!-- Topbar Search -->
                 <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                     <div class="input-group">
                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
@@ -120,7 +127,7 @@
                             </button>
                         </div>
                     </div>
-                </form>
+                </form>--}}
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -262,7 +269,7 @@
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="{{ route('profile') }}">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                                {{ __('Profile') }}
+                                {{ __('Perfil') }}
                             </a>
                             <a class="dropdown-item" href="javascript:void(0)">
                                 <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
@@ -286,7 +293,7 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container-fluid p-5">
 
                 @yield('main-content')
 
@@ -321,12 +328,12 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">{{ __('Ready to Leave?') }}</h5>
+                <h5 class="modal-title" id="exampleModalLabel">{{ __('¿A punto de cerrar sesión?') }}</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
-            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-body">Selecciona "Logout" si realmente deseas cerrar sesión.</div>
             <div class="modal-footer">
                 <button class="btn btn-link" type="button" data-dismiss="modal">{{ __('Cancel') }}</button>
                 <a class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">{{ __('Logout') }}</a>

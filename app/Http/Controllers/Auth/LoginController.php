@@ -5,6 +5,10 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
+use Symfony\Component\HttpFoundation\Response;
 
 class LoginController extends Controller
 {
@@ -38,9 +42,44 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @param Request $request
+     * @return bool
+     */
+    protected function attemptLogin(Request $request)
+    {
+        $this->validateUserState($request);
+        return $this->guard()->attempt(
+            $this->credentials($request), $request->filled('remember')
+        );
+    }
+
     protected function redirectTo()
     {
-        session()->flash('success', 'You are logged in!');
+        session()->flash('success', 'Bienvenido '.Auth::user()->username.'.');
         return $this->redirectTo;
+    }
+
+    private function validateUserState(Request $request){
+        $username = trim($request->get('email'));
+        if(verificarInactividadUsuario($username))
+            return $this->sendFailedLoginResponse($request);
+    }
+
+    /**
+     * Get the failed login response instance.
+     *
+     * @param Request $request
+     * @return Response
+     *
+     * @throws ValidationException
+     */
+    protected function sendFailedLoginResponse(Request $request)
+    {
+        throw ValidationException::withMessages([
+            $this->username() => ['Usuario Inactivo'],
+        ]);
     }
 }
