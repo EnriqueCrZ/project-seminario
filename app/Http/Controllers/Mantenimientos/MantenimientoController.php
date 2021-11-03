@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Mantenimiento;
+namespace App\Http\Controllers\Mantenimientos;
 
 use App\Http\Models\Maintenance;
 use App\Http\Models\Provider;
@@ -33,13 +33,13 @@ class MantenimientoController extends Controller
     }
 
     public function insumos(){
-        return view('mantenimiento.insumosrespuestos');
+        return view('mantenimiento.insumos');
     }
     public function proximos(){
-        return view('mantenimiento.proximosmantenimiento');
+        return view('mantenimiento.proximos');
     }
 
     public function estatus(){
-        return view('mantenimiento.estatusmantenimiento');
+        return view('mantenimiento.estatus');
     }
 }

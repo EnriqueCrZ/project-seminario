@@ -2,24 +2,24 @@
 
 @section('main-content')
 
-    <h2>MANTENIMIENTO</h2>
 
-    <ul class="nav">
+
+    <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="mantenimiento.blade.php">MANTENIMIENTO</a>
+            <a class="nav-link active" aria-current="page" href="{{ route('mantenimiento') }}">Mantenimiento</a>
         </li>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="estatusmantenimiento.blade.php.blade.php">Link</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="proximosmantenimiento.blade.php">Link</a>
+            <a class="nav-link" href="{{ route('mantenimiento.estatus') }}">Estatus de Mantenimiento</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="insumosrespuestos.blade.php">Link</a>
+            <a class="nav-link" href="{{ route('mantenimiento.proximos') }}">Mantenimientos Proximos</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('mantenimiento.insumo') }}">Insumos y Respuestos</a>
+        </li>
+
     </ul>
-
 
 
 @endsection

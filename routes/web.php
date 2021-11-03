@@ -34,10 +34,10 @@ Route::post('/proveedores/delete/', 'Proveedores\ProveedorController@destroy')->
 
 
 /* Mantenimiento */
-Route::get('/mantenimiento', 'Mantenimiento\MantenimientoController@index')->name('mantenimiento');
-Route::get('/mantenimiento/insumos','Mantenimiento\MantenimientoController@insumos')->name('mantenimiento.insumo');
-Route::get('/mantenimiento/proximos','Mantenimiento\MantenimientoController@proximos')->name('mantenimiento.proximos');
-Route::get('/mantenimiento/estatus','Mantenimiento\MantenimientoController@estatus')->name('mantenimiento.estatus');
+Route::get('/mantenimiento', 'Mantenimientos\MantenimientoController@index')->name('mantenimiento');
+Route::get('/mantenimiento/insumos','Mantenimientos\MantenimientoController@insumos')->name('mantenimiento.insumo');
+Route::get('/mantenimiento/proximos','Mantenimientos\MantenimientoController@proximos')->name('mantenimiento.proximos');
+Route::get('/mantenimiento/estatus','Mantenimientos\MantenimientoController@estatus')->name('mantenimiento.estatus');
 
 /* Mantenimiento */
 

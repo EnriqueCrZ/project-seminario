@@ -1,25 +1,33 @@
 @extends('layouts.admin')
 
 @section('main-content')
-    <h2>ESTADO DE MANTENIMIENTO</h2>
 
-    <ul class="nav">
+
+    <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="mantenimiento.blade.php">MANTENIMIENTO</a>
+            <a class="nav-link " aria-current="page" href="{{ route('mantenimiento') }}">Mantenimiento</a>
         </li>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="estatusmantenimiento.blade.php.blade.php">Link</a>
+            <a class="nav-link active" href="{{ route('mantenimiento.estatus') }}">Estatus de Mantenimiento</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="proximosmantenimiento.blade.php">Link</a>
+            <a class="nav-link" href="{{ route('mantenimiento.proximos') }}">Mantenimientos Proximos</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="insumosrespuestos.blade.php">Link</a>
+            <a class="nav-link" href="{{ route('mantenimiento.insumo') }}">Insumos y Respuestos</a>
+        </li>
+        <li>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <div class="btn-group">
+                <button type="button" class="btn btn-outline-secondary">Crear Orden de Trabajo</button>
+                <button type="button" class="btn btn-outline-info">Buscar Orden de Trabajo</button>
+
+            </div>
+
         </li>
     </ul>
 
-    <button type="button" class="btn btn-primary">Crear Orden de Trabajo</button>
 
     <table class="table">
         <thead>

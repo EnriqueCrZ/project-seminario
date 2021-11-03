@@ -13,7 +13,11 @@
 
  <div>
      <a href="{{route('proveedor.crear')}}">
-         <button type="button" class="btn btn-primary">Crear</button>
+         <div class="btn-group">
+
+             <button type="button" class="btn btn-outline-info">Crear Proveedor</button>
+
+         </div>
      </a>
  </div>
     <table class="table">
