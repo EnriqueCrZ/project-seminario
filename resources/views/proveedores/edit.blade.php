@@ -66,9 +66,9 @@
                             <p class="text-danger">{{$errors->first('telefono')}}</p>
                         @endif
                     </div>
-                    <div>
-                        <button class="btn btn-primary" type="submit">Actualizar</button>
-                        <a href="{{ url()->previous() }}" class="btn btn-danger">Regresar</a>
+                    <div class="btn-group">
+                        <button class="btn btn-outline-info" type="submit">Actualizar</button>
+                        <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Regresar</a>
                     </div>
                 </form>
             </div>

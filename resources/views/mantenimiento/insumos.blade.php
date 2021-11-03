@@ -26,7 +26,7 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-outline-secondary">Ingresar Producto</button>
                 <button type="button" class="btn btn-outline-info">Buscar Producto</button>
-                <button type="button" class="btn btn-outline-warning">Retirar Producto</button>
+                <button type="button" class="btn btn-outline-danger">Retirar Producto</button>
             </div>
 
         </li>

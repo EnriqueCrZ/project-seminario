@@ -129,7 +129,9 @@
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col text-center">
-                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    <div class="btn-group">
+                                    <button type="submit" class="btn btn-outline-info">Guardar Cambios</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
