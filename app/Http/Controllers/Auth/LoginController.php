@@ -65,7 +65,7 @@ class LoginController extends Controller
     private function validateUserState(Request $request){
         $username = trim($request->get('email'));
         if(verificarInactividadUsuario($username))
-            return $this->sendFailedLoginResponse($request);
+            return $this->sendFailedLoginResponse($request,'Inactivo');
     }
 
     /**
@@ -76,10 +76,11 @@ class LoginController extends Controller
      *
      * @throws ValidationException
      */
-    protected function sendFailedLoginResponse(Request $request)
+    protected function sendFailedLoginResponse(Request $request,$type = null)
     {
+        $message = $type == 'Inactivo' ? 'Usuario Inactivo' : trans('auth.failed');
         throw ValidationException::withMessages([
-            $this->username() => ['Usuario Inactivo'],
+            $this->username() => [$message],
         ]);
     }
 }

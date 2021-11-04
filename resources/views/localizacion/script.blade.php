@@ -1,5 +1,6 @@
 <script type="text/javascript">
 
+    @if(isset($locations))
     let map;
     const infoWindow = new google.maps.InfoWindow();
 
@@ -23,4 +24,5 @@
         @endforeach
 
     }
+    @endif
 </script>

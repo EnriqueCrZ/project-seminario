@@ -1,5 +1,9 @@
 @extends('layouts.admin')
 
+@section('titulo')
+    Usuarios
+@endsection
+
 @section('main-content')
 
     @if(session('status'))
@@ -9,7 +13,7 @@
     @endif
 
     <!-- Page Heading -->
-    <h1 class="h3 mb-4 text-gray-800">{{ __('Usuarios') }}</h1>
+    {{--<h1 class="h3 mb-4 text-gray-800">{{ __('Usuarios') }}</h1>--}}
 
     <div class="row">
         <div class="col col-6 offset-4">
