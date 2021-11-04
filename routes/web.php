@@ -54,3 +54,9 @@ Route::post('/vehiculos/delete/', 'Vehiculos\Vehiculoscontroller@destroy')->name
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+/*
+ * Reportes
+ */
+Route::get('/admin/reportes/','Reportes\ReporteController@index')->name('reporte.index');
+Route::get('/admin/reportes/generate','Reportes\ReporteController@export')->name('reporte.export');

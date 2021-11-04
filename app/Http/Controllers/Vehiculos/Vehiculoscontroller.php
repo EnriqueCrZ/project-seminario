@@ -2,15 +2,12 @@
 
 namespace App\Http\Controllers\Vehiculos;
 
-use App\Http\Models\Provider;
 use App\Http\Models\Vehicle;
 use App\Http\Models\VehicleType;
-use App\User;
 use Carbon\Carbon;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 
 class Vehiculoscontroller extends Controller
 {

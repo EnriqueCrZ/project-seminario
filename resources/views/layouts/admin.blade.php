@@ -18,6 +18,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
+    @yield('styles')
     <style>
         body, html {
             height: 100%;
@@ -121,6 +122,13 @@
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
+
+        <li class="nav-item" {{ Nav::isRoute('reporte.index') }}>
+            <a href="{{ route('reporte.index') }}" class="nav-link">
+                <i class="fas fa-file-export"></i>
+                <span>{{ __('Reportes') }}</span>
+            </a>
+        </li>
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -380,6 +388,7 @@
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+@yield('scripts')
 @include('localizacion.asyncApi')
 @include('localizacion.script')
 </body>
