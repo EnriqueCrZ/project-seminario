@@ -91,7 +91,12 @@ class ReporteController extends Controller
 
         $pdf->loadHTML($view);
 
-        $pdf->setOptions(['isPhpEnabled'=>true,'isRemoteEnabled'=>true]);
+        $pdf->setOptions([
+            'isPhpEnabled'=>true,
+            'isRemoteEnabled'=>true,
+            'logOutputFile'=> storage_path('logs/dompdf.html'),
+            'tempDir'=>storage_path('fonts')
+        ]);
         return $pdf->stream('Proveedores'.$hoy.'.pdf');
     }
 }
