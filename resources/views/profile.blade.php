@@ -129,13 +129,10 @@
                         <div class="pl-lg-4">
                             <div class="row">
                                 <div class="col text-center">
-<<<<<<< HEAD
                                     <div class="btn-group">
                                     <button type="submit" class="btn btn-outline-info">Guardar Cambios</button>
                                     </div>
-=======
-                                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
->>>>>>> 7e8217254fa8de1a7a933419aaf8fe70a4fc7522
+
                                 </div>
                             </div>
                         </div>
