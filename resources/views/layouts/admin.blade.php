@@ -103,6 +103,13 @@
                 <span>{{ __('Mantenimiento') }}</span>
             </a>
         </li>
+        <!-- Nav Item - Vehiculos -->
+        <li class="nav-item {{ Nav::isRoute('vehiculo') }}">
+            <a class="nav-link" href="{{ route('vehiculo') }}">
+                <i class="fas fa-car"></i>
+                <span>{{ __('Vehiculo') }}</span>
+            </a>
+        </li>
 
         <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">

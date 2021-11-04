@@ -16,13 +16,11 @@
  <div>
      <a href="{{route('proveedor.crear')}}">
          <div class="btn-group">
-
              <button type="button" class="btn btn-outline-info">Crear Proveedor</button>
-
          </div>
      </a>
  </div>
-    <table class="table">
+    <table class="table text-center table-responsive-md">
         @if(count($providers))
         <thead>
         <tr>
@@ -39,7 +37,7 @@
         @endif
         <tbody>
         @forelse($providers as $provider)
-        <tr>
+        <tr class="font-weight-bold">
             <th>{{$loop->iteration}}</th>
             <td>{{$provider->id_provider}}</td>
             <td>{{$provider->provider_name}}</td>
@@ -59,6 +57,9 @@
         @endforelse
         </tbody>
     </table>
+    <div class="row ml-1 d-flex justify-content-center">
+        {{ $providers->links() }}
+    </div>
     <script>
         function confirmDelete(id){
             Swal.fire({
