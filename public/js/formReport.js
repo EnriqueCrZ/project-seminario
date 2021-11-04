@@ -56,7 +56,7 @@ let smartWizard = $('#smartwizard');
         }
 
 
-        window.location = "/admin/reportes/generate?" + $.param(formData);
+        window.open( "/admin/reportes/generate?" + $.param(formData),'_blank');
     })
 
     function resetWizard(){
