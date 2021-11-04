@@ -45,7 +45,9 @@ Route::get('/mantenimiento/estatus','Mantenimientos\MantenimientoController@esta
 
 // Vehiculos
 Route::get('/vehiculos', 'Vehiculos\Vehiculoscontroller@index')->name('vehiculo');
+Route::get('/vehiculos/create', 'Vehiculos\Vehiculoscontroller@create') ->name('vehiculo.crear');
 
+Route::get('/vehiculos/edit/', 'Vehiculos\Vehiculoscontroller@edit') ->name('vehiculo.edit');
 
 Route::get('/about', function () {
     return view('about');
