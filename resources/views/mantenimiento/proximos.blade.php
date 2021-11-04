@@ -21,7 +21,7 @@
             <div class="btn-group">
                 <button type="button" class="btn btn-outline-secondary">Programar Mantenimiento</button>
                 <button type="button" class="btn btn-outline-info">Buscar Mantenimiento</button>
-                
+
             </div>
 
         </li>

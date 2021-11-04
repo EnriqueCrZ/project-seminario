@@ -18,7 +18,7 @@
             <a class="nav-link" href="{{ route('mantenimiento.insumo') }}">Insumos y Respuestos</a>
         </li>
         <li>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="btn-group">
                 <button type="button" class="btn btn-outline-secondary">Crear Orden de Trabajo</button>
                 <button type="button" class="btn btn-outline-info">Buscar Orden de Trabajo</button>
@@ -26,8 +26,16 @@
             </div>
 
         </li>
+
     </ul>
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" onclick="openModal()" >
+        Launch demo modal
+    </button>
+    <div class="modal1">
+
+    </div>
 
     <table class="table">
         <thead>
@@ -52,7 +60,7 @@
             <td>NTI</td>
             <td>Calle Marginal</td>
             <td>admin@admin.com</td>
-            <td>Telefono</td>
+            <td>Preventivo</td>
             <td>activo</td>
             <td><button type="button" class="btn btn-outline-danger">Finalizar</button></td>
         </tr>
@@ -63,7 +71,7 @@
             <td>NTI</td>
             <td>Calle Marginal3</td>
             <td>admin122@admin.com</td>
-            <td>Telefono</td>
+            <td>Correctivo</td>
             <td>activo</td>
             <td><button type="button" class="btn btn-outline-danger">Finalizar</button></td>
         </tr>
@@ -71,4 +79,17 @@
 
         </tbody>
     </table>
+    <script>
+        function openModal(){
+            $.ajax({
+                type: 'POST',
+                url: '{{route('modal.mantenimiento')}}',
+                data: {'_token': '{{csrf_token()}}'},
+                success: function (data){
+                    $('.modal1').html(data);
+                    $('#modalMantenimiento').modal();
+                }
+            });
+        }
+    </script>
 @endsection

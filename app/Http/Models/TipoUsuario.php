@@ -10,7 +10,7 @@ class TipoUsuario extends Model
 
 
     protected $fillable = [
-        'descripcion'
+        ',id_user_type','descripcion'
     ];
 
     protected $primaryKey = 'id_user_type';
