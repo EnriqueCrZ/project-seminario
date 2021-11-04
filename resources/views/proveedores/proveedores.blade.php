@@ -1,13 +1,15 @@
 @extends('layouts.admin')
 
+@section('titulo')
+    Registro de Proveedores
+@endsection
+
 @section('main-content')
     @if(session('status'))
         <div class="alert alert-success">
             {{ session('status') }}
         </div>
     @endif
-
- <h2>REGISTRO DE PROVEEDORES</h2>
 
 
 
