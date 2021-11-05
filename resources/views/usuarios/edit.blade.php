@@ -1,14 +1,13 @@
 @extends('layouts.admin')
 
+@section('titulo')
+    Editar Usuario {{$usuario->username}}
+@endsection
+
 @section('main-content')
     <div class="container">
         <div class="card">
 
-            <div class="card-header">
-                <div class="col-md-12 text-secondary d-flex justify-content-center text-blue text-uppercase">
-                    <h3>Editar usuario</h3>
-                </div>
-            </div>
             <div class="card-body">
 
                 @if ( ! $errors->isEmpty() )

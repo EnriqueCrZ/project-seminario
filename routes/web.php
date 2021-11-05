@@ -50,9 +50,22 @@ Route::post('/mantenimiento/modal/retirar','Mantenimientos\MantenimientoControll
 // Vehiculos
 Route::get('/vehiculos', 'Vehiculos\Vehiculoscontroller@index')->name('vehiculo');
 Route::get('/vehiculos/create', 'Vehiculos\Vehiculoscontroller@create') ->name('vehiculo.crear');
+Route::post('/vehiculos/store', 'Vehiculos\Vehiculoscontroller@store') ->name('vehiculo.guardar');
+Route::get('/vehiculos/edit/{vehiculo}', 'Vehiculos\Vehiculoscontroller@edit') ->name('vehiculo.edit');
+Route::post('/vehiculos/update/{vehiculo}', 'Vehiculos\Vehiculoscontroller@update')->name('vehiculo.update');
+Route::post('/vehiculos/delete/', 'Vehiculos\Vehiculoscontroller@destroy')->name('vehiculo.delete');
 
-Route::get('/vehiculos/edit/', 'Vehiculos\Vehiculoscontroller@edit') ->name('vehiculo.edit');
+//Registro de Actividades
+
+
+Route::get('/registroactividad', 'registroactividad\RegistroActividadcontroller@index')->name('registroactividad');
 
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+/*
+ * Reportes
+ */
+Route::get('/admin/reportes/','Reportes\ReporteController@index')->name('reporte.index');
+Route::get('/admin/reportes/generate','Reportes\ReporteController@export')->name('reporte.export');
