@@ -2,9 +2,10 @@
 
     @if(isset($locations))
     let map;
-    const infoWindow = new google.maps.InfoWindow();
+    let infoWindow;
 
     function initMap(){
+        infoWindow = new google.maps.InfoWindow();
         map = new google.maps.Map(document.getElementById('map'),{
             center: { lat: 15.696703, lng: -88.585480},
             zoom: 18,

@@ -28,7 +28,7 @@ class ProveedorController extends Controller
      */
     public function index()
     {
-        $providers = Provider::all();
+        $providers = Provider::paginate(20);
 
         return view('proveedores.proveedores', compact('providers'));
     }
@@ -74,8 +74,10 @@ class ProveedorController extends Controller
             $proveedor = Provider::where('id_provider',$id)->first();
             $proveedor->delete();
             return true;
-        }catch (QueryException $e){
-            return $e;
+        }catch (QueryException $exception){
+            $errorCode = $exception->getCode();
+            $errorValue = $exception->getMessage();
+            return view('error',compact('errorCode','errorValue'));
         }
     }
 
