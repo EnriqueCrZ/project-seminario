@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-
+@section('titulo')
+    Vehiculos
+@endsection
 @section('main-content')
 
-
-<h2>REGISTRO DE VEHICULOS</h2><br>
 <div>
      <a href="{{route('vehiculo.crear')}}">
          <button type="button" class="btn btn-primary">Crear</button>
