@@ -67,38 +67,66 @@
     <div class="col-xs-6" style="margin-bottom: 1px">
         <br>
         <h2 class="text-center text-primary title" style="margin-top:20px !important;font-size: 30px;">Sistema de Logistica <br> y Transporte</h2>
-        <h4 class="text-primary title">SLT, S.A.  &nbsp;  NIT: ******-*</h4>
+        <h4 class="text-center text-primary title">SLT, S.A.  &nbsp;  NIT: ******-*</h4>
     </div>
     <div class="col-xs-3" style="margin-bottom: 1px">
     </div>
 </div>
 <div class="bg-azul"></div>
-<table>
-    <thead>
-    <tr>
-        <th scope="col">#</th>
-        <th scope="col">Cod. Prov</th>
-        <th scope="col">Nombre</th>
-        <th scope="col">NIT</th>
-        <th scope="col">Dirección</th>
-        <th scope="col">Email</th>
-        <th scope="col">Telefono</th>
-    </tr>
-    </thead>
-    <tbody>
+<div class="row">
+    <div class="col-xs-2">
+        <div class="field">
+            Cod. Proveedor
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="field">
+            Nombre
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="field">
+            NIT
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="field">
+            Dirección
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="field">
+            Email
+        </div>
+    </div>
+    <div class="col-xs-2">
+        <div class="field">
+            Telefono
+        </div>
+    </div>
+</div>
     @foreach($providers as $provider)
-        <tr>
-            <th><b>{{$loop->iteration}}</b></th>
-            <td><b>{{$provider->id_provider}}</b></td>
-            <td><b>{{$provider->provider_name}}</b></td>
-            <td><b>{{$provider->nit}}</b></td>
-            <td><b>{{$provider->provider_address}}</b></td>
-            <td><b>{{$provider->email}}</b></td>
-            <td><b>{{$provider->telefono}}</b></td>
-        </tr>
+        <div class="row">
+            <div class="col-xs-2">
+                <b>{{$provider->id_provider}}</b>
+            </div>
+            <div class="col-xs-2">
+                <b>{{$provider->provider_name}}</b>
+            </div>
+            <div class="col-xs-2">
+                <b>{{$provider->nit}}</b>
+            </div>
+            <div class="col-xs-2">
+                <b>{{$provider->provider_address}}</b>
+            </div>
+            <div class="col-xs-2">
+                <b>{{$provider->email}}</b>
+            </div>
+            <div class="col-xs-2">
+                <b>{{$provider->telefono}}</b>
+            </div>
+        </div>
     @endforeach
-    </tbody>
-</table>
 <h4 class="text-center text-primary title">Seguridad, Integridad, Eficiencia y enfoque de Servicio al Cliente</h4>
 
 </body>

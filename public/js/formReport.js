@@ -10,6 +10,7 @@ let smartWizard = $('#smartwizard');
         autoAdjustHeight:true,
         transitionEffect:'fade',
         showStepURLhash: false,
+        enableURLhash: false,
         lang: {
             next: 'Siguiente',
             previous: 'Anterior'
