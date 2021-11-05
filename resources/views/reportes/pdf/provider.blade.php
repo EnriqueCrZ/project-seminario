@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Invoice - #123</title>
+    <title>Proveedores {{date('m-d-Y',strtotime($hoy))}}</title>
 
     <style type="text/css">
         @page {
@@ -73,7 +73,7 @@ Fecha: {{date('d-m-Y',strtotime($hoy))}}
 
             </td>
             <td align="center">
-                <img src="{{asset('img/cover-login.png')}}" alt="Logo" width="64" class="logo"/>
+                <img src="{{asset('img/pdf-cover.png')}}" alt="Logo" width="64" class="logo"/>
             </td>
             <td align="right" style="width: 40%;">
 
@@ -110,12 +110,12 @@ Fecha: {{date('d-m-Y',strtotime($hoy))}}
         <tbody>
         @foreach($providers as $provider)
         <tr>
-            <td>{{$provider->id_provider}}</td>
-            <td>{{$provider->provider_name}}</td>
-            <td>{{$provider->nit}}</td>
-            <td>{{$provider->provider_address}}</td>
-            <td>{{$provider->email}}</td>
-            <td>{{$provider->telefono}}</td>
+            <td class="text-center">{{$provider->id_provider}}</td>
+            <td class="text-center">{{$provider->provider_name}}</td>
+            <td class="text-center">{{$provider->nit}}</td>
+            <td class="text-center">{{$provider->provider_address}}</td>
+            <td class="text-center">{{$provider->email}}</td>
+            <td class="text-center">{{$provider->telefono}}</td>
         </tr>
         @endforeach
     </table>
