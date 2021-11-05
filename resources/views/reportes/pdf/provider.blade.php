@@ -17,7 +17,10 @@
         font-family:  Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;;
     }
     .field {
-        font-size: 12px;
+        font-size: 10px;
+    }
+    .field_content {
+        font-size: 8px;
     }
     @page {
         margin-top: 0.5cm;
@@ -74,7 +77,7 @@
 </div>
 <div class="bg-azul"></div>
 <div class="row">
-    <div class="col-xs-2">
+    <div class="col-xs-1">
         <div class="field">
             Cod. Proveedor
         </div>
@@ -107,27 +110,39 @@
 </div>
     @foreach($providers as $provider)
         <div class="row">
-            <div class="col-xs-2">
-                <b>{{$provider->id_provider}}</b>
+            <div class="col-xs-1">
+                <div class="field_content">
+                    <b>{{$provider->id_provider}}</b>
+                </div>
             </div>
             <div class="col-xs-2">
-                <b>{{$provider->provider_name}}</b>
+                <div class="field_content">
+                    <b>{{$provider->provider_name}}</b>
+                </div>
             </div>
             <div class="col-xs-2">
-                <b>{{$provider->nit}}</b>
+                <div class="field_content">
+                    <b>{{$provider->nit}}</b>
+                </div>
             </div>
             <div class="col-xs-2">
-                <b>{{$provider->provider_address}}</b>
+                <div class="field_content">
+                    <b>{{$provider->provider_address}}</b>
+                </div>
             </div>
             <div class="col-xs-2">
-                <b>{{$provider->email}}</b>
+                <div class="field_content">
+                    <b>{{$provider->email}}</b>
+                </div>
             </div>
             <div class="col-xs-2">
-                <b>{{$provider->telefono}}</b>
+                <div class="field_content">
+                    <b>{{$provider->telefono}}</b>
+                </div>
             </div>
         </div>
     @endforeach
-<h4 class="text-center text-primary title">Seguridad, Integridad, Eficiencia y enfoque de Servicio al Cliente</h4>
+<h4 class="text-center text-primary title">Eficiencia y Enfoque a la Logística y el Transporte</h4>
 
 </body>
 </html>
