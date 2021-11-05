@@ -79,7 +79,7 @@
 <div class="row">
     <div class="col-xs-1">
         <div class="field">
-            Cod. Proveedor
+            # Proveedor
         </div>
     </div>
     <div class="col-xs-2">
