@@ -51,6 +51,11 @@ Route::get('/vehiculos/edit/{vehiculo}', 'Vehiculos\Vehiculoscontroller@edit') -
 Route::post('/vehiculos/update/{vehiculo}', 'Vehiculos\Vehiculoscontroller@update')->name('vehiculo.update');
 Route::post('/vehiculos/delete/', 'Vehiculos\Vehiculoscontroller@destroy')->name('vehiculo.delete');
 
+//Registro de Actividades
+
+
+Route::get('/registroactividad', 'registroactividad\RegistroActividadcontroller@index')->name('registroactividad');
+
 Route::get('/about', function () {
     return view('about');
 })->name('about');

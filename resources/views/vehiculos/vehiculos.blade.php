@@ -1,9 +1,7 @@
 @extends('layouts.admin')
-
 @section('titulo')
-    Registro de Vehiculos
+    Vehiculos
 @endsection
-
 @section('main-content')
 
     @if(session('status'))
@@ -28,7 +26,6 @@
             </div>
         </div>
     </div>
-
 
 <div>
      <a href="{{route('vehiculo.crear')}}">
