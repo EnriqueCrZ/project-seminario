@@ -7,9 +7,12 @@ use App\Exports\UsuarioExport;
 use App\Exports\VehicleExport;
 use App\Http\Controllers\Controller;
 use App\Http\Models\Provider;
+use App\Http\Models\Vehicle;
+use App\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
+use Illuminate\Support\Facades\Auth;
 use Maatwebsite\Excel\Facades\Excel;
 
 class ReporteController extends Controller
@@ -58,9 +61,9 @@ class ReporteController extends Controller
 
     private static function selectCollectionPDFExport($collection,$hoy){
         if($collection == self::$VEHICLES)
-            return 0;
+            return self::exportPDFVehicles($hoy);
         elseif($collection == self::$USERS)
-            return 0;
+            return self::exportPDFUsers($hoy);
         elseif($collection == self::$PROVIDERS)
             return self::exportPDFProviders($hoy);
         else
@@ -84,9 +87,51 @@ class ReporteController extends Controller
      * Funciones para la generacion de PDF
      */
 
+    private static function createAppPDF(){
+        return App::make('dompdf.wrapper');
+    }
+
+    private static function exportPDFVehicles($hoy){
+        $vehicles = Vehicle::join('vehicle_type','vehicle_type.id_vehicle_type','vehicle.vehicle_type_id_vehicle_type')
+            ->select('vehicle.*','vehicle_type.vehicle_type as vehicle_type')
+            ->get();
+        $pdf = self::createAppPDF();
+        $view = view('reportes.pdf.vehicle',compact('vehicles','hoy'));
+
+        $pdf->loadHTML($view);
+
+        $pdf->setOptions([
+            'isPhpEnabled'=>true,
+            'isRemoteEnabled'=>true,
+            'logOutputFile'=> storage_path('logs/dompdf.html'),
+            'tempDir'=>storage_path('fonts')
+        ]);
+
+        return $pdf->stream('Vehiculos-'.$hoy.'.pdf');
+    }
+
+    private static function exportPDFUsers($hoy){
+        $users = User::join('user_type','user_type.id_user_type','user.user_type_id_user_type')
+            ->select('user_type.description as tipoUsuario','user.username','user.email','user.is_active','user.id')
+            ->get();
+
+        $pdf = self::createAppPDF();
+        $view = view('reportes.pdf.users',compact('users','hoy'));
+
+        $pdf->loadHTML($view);
+        $pdf->setOptions([
+            'isPhpEnabled'=>true,
+            'isRemoteEnabled'=>true,
+            'logOutputFile'=> storage_path('logs/dompdf.html'),
+            'tempDir'=>storage_path('fonts')
+        ]);
+
+        return $pdf->stream('Usuarios-'.$hoy.'.pdf');
+    }
+
     private static function exportPDFProviders($hoy){
         $providers = Provider::all();
-        $pdf = App::make('dompdf.wrapper');
+        $pdf = self::createAppPDF();
         $view = view('reportes.pdf.provider',compact('providers','hoy'));
 
         $pdf->loadHTML($view);
@@ -97,6 +142,6 @@ class ReporteController extends Controller
             'logOutputFile'=> storage_path('logs/dompdf.html'),
             'tempDir'=>storage_path('fonts')
         ]);
-        return $pdf->stream('Proveedores'.$hoy.'.pdf');
+        return $pdf->stream('Proveedores-'.$hoy.'.pdf');
     }
 }

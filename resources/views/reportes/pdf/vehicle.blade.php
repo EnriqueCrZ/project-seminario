@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Proveedores {{date('m-d-Y',strtotime($hoy))}}</title>
+    <title>Vehiculos {{date('m-d-Y',strtotime($hoy))}}</title>
 
     <style type="text/css">
         @page {
@@ -109,27 +109,31 @@ Fecha: {{date('d-m-Y',strtotime($hoy))}}
 <br/>
 
 <div class="invoice">
-    <h3>Proveedores</h3>
+    <h3>Vehiculos</h3>
     <table width="100%">
         <thead class="table-header">
-            <tr>
-                <th>Cod. Proveedor</th>
-                <th>Nombre</th>
-                <th>NIT</th>
-                <th>Direccion</th>
-                <th>Email</th>
-                <th>Telefono</th>
-            </tr>
+        <tr>
+            <th>Placa</th>
+            <th>Marca</th>
+            <th>Modelo</th>
+            <th>Linea</th>
+            <th>Serie Chasis</th>
+            <th>Serie Motor</th>
+            <th>CC</th>
+            <th>Tipo de Vehiculo</th>
+        </tr>
         </thead>
         <tbody>
-        @foreach($providers as $provider)
-            <tr style="margin-left: 10px!important;">
-                <td>{{$provider->id_provider}}</td>
-                <td>{{$provider->provider_name}}</td>
-                <td>{{$provider->nit}}</td>
-                <td>{{$provider->provider_address}}</td>
-                <td>{{$provider->email}}</td>
-                <td>{{$provider->telefono}}</td>
+        @foreach($vehicles as $vehiculo)
+            <tr style="margin-left: 5px!important;">
+                <td>{{$vehiculo->plate}}</td>
+                <td>{{$vehiculo->brand}}</td>
+                <td>{{$vehiculo->model}}</td>
+                <td>{{$vehiculo->line}}</td>
+                <td>{{$vehiculo->vehicle_code}}</td>
+                <td>{{$vehiculo->motor}}</td>
+                <td>{{$vehiculo->cc}}</td>
+                <td>{{$vehiculo->vehicle_type}}</td>
             </tr>
         @endforeach
     </table>
