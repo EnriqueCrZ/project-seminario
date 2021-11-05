@@ -1,148 +1,138 @@
-<html lang="es">
+<!doctype html>
+<html lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>Proveedores</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <title>Invoice - #123</title>
+
+    <style type="text/css">
+        @page {
+            margin: 0px;
+        }
+        body {
+            margin: 0px;
+        }
+        * {
+            font-family: Verdana, Arial, sans-serif;
+        }
+        a {
+            color: #fff;
+            text-decoration: none;
+        }
+        table {
+            font-size: x-small;
+        }
+        tfoot tr td {
+            font-weight: bold;
+            font-size: x-small;
+        }
+        .invoice table {
+            margin: 15px;
+        }
+        .invoice h3 {
+            margin-left: 15px;
+        }
+        .information {
+            background-color: #4e73df;
+            color: #FFF;
+        }
+        .information .logo {
+            margin: 5px;
+        }
+        .information table {
+            padding: 10px;
+        }
+
+        #watermark {
+            position: fixed;
+            bottom:   15cm;
+            opacity: 0.3;
+
+            left:     5.5cm;
+            width:    8cm;
+            height:   8cm;
+            z-index:  -1000;
+        }
+    </style>
+
 </head>
-<style>
-    body {
-        font-family:  Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif; ;
-        font-size: 14px;
-        line-height: 20px;
-        max-height: 100%;
-        width: 100%;
-        max-width: 100%;
-    }
-    .title{
-        font-family:  Calibri,Candara,Segoe,Segoe UI,Optima,Arial,sans-serif;;
-    }
-    .field {
-        font-size: 10px;
-    }
-    .field_content {
-        font-size: 8px;
-    }
-    @page {
-        margin-top: 0.5cm;
-        margin-bottom: 2cm;
-        margin-left: 1cm;
-        margin-right: 1cm;
-    }
-
-    .separador {
-        border-bottom: #3f9ae5;
-        border-bottom-width: thick;
-    }
-    .layer1{
-        margin-top: 10px;
-    }
-    .layer2{
-        margin-top: 20px;
-    }
-    .bg-azul{
-        background: #3f9ae5;
-        height:7px;
-    }
-    #watermark {
-        position: fixed;
-        bottom:   15cm;
-        opacity: 0.3;
-
-        left:     5.5cm;
-        width:    8cm;
-        height:   8cm;
-        z-index:  -1000;
-    }
-    thead:before, thead:after { display: none; }
-    tbody:before, tbody:after { display: none; }
-</style>
 <body>
 <div id="watermark">
     <img src="{{asset('img/cover-login.png')}}" height="100%" width="100%" />
 </div>
-<div class="row align-items-start">
-    <div class="col-xs-3">
-        <br><br>
-        <div class="turn" style="line-height: 1px; margin-bottom: 2px;margin-top: 0">
-            <b style="font-size: 12px">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{date('d-m-Y',strtotime($hoy))}}</b>
-        </div>
-    </div>
-    <div class="col-xs-6" style="margin-bottom: 1px">
-        <br>
-        <h2 class="text-center text-primary title" style="margin-top:20px !important;font-size: 30px;">Sistema de Logistica <br> y Transporte</h2>
-        <h4 class="text-center text-primary title">SLT, S.A.  &nbsp;  NIT: ******-*</h4>
-    </div>
-    <div class="col-xs-3" style="margin-bottom: 1px">
-    </div>
-</div>
-<div class="bg-azul"></div>
-<div class="row">
-    <div class="col-xs-1">
-        <div class="field">
-            # Proveedor
-        </div>
-    </div>
-    <div class="col-xs-2">
-        <div class="field">
-            Nombre
-        </div>
-    </div>
-    <div class="col-xs-2">
-        <div class="field">
-            NIT
-        </div>
-    </div>
-    <div class="col-xs-2">
-        <div class="field">
-            Dirección
-        </div>
-    </div>
-    <div class="col-xs-2">
-        <div class="field">
-            Email
-        </div>
-    </div>
-    <div class="col-xs-2">
-        <div class="field">
-            Telefono
-        </div>
-    </div>
-</div>
-    @foreach($providers as $provider)
-        <div class="row">
-            <div class="col-xs-1">
-                <div class="field_content">
-                    <b>{{$provider->id_provider}}</b>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="field_content">
-                    <b>{{$provider->provider_name}}</b>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="field_content">
-                    <b>{{$provider->nit}}</b>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="field_content">
-                    <b>{{$provider->provider_address}}</b>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="field_content">
-                    <b>{{$provider->email}}</b>
-                </div>
-            </div>
-            <div class="col-xs-2">
-                <div class="field_content">
-                    <b>{{$provider->telefono}}</b>
-                </div>
-            </div>
-        </div>
-    @endforeach
-<h4 class="text-center text-primary title">Eficiencia y Enfoque a la Logística y el Transporte</h4>
+<div class="information">
+    <table width="100%">
+        <tr>
+            <td align="left" style="width: 40%;">
+                <h3></h3>
+                <pre>
 
+<br /><br />
+Fecha: {{date('d-m-Y',strtotime($hoy))}}
+</pre>
+
+
+            </td>
+            <td align="center">
+                <img src="{{asset('img/cover-login.png')}}" alt="Logo" width="64" class="logo"/>
+            </td>
+            <td align="right" style="width: 40%;">
+
+                <h3>Sistema de Logistia y Transporte</h3>
+                <pre>
+                    https://sistemalt.com
+
+                    20 Calle
+                    Puerto Barrios, Izabal
+                    Guatemala
+                </pre>
+            </td>
+        </tr>
+
+    </table>
+</div>
+
+
+<br/>
+
+<div class="invoice">
+    <h3>Proveedores</h3>
+    <table width="100%">
+        <thead>
+        <tr>
+            <th>Cod. Proveedor</th>
+            <th>Nombre</th>
+            <th>NIT</th>
+            <th>Direccion</th>
+            <th>Email</th>
+            <th>Telefono</th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach($providers as $provider)
+        <tr>
+            <td>{{$provider->id_provider}}</td>
+            <td>{{$provider->provider_name}}</td>
+            <td>{{$provider->nit}}</td>
+            <td>{{$provider->provider_address}}</td>
+            <td>{{$provider->email}}</td>
+            <td>{{$provider->telefono}}</td>
+        </tr>
+        @endforeach
+    </table>
+</div>
+
+<div class="information" style="position: absolute; bottom: 0;">
+    <table width="100%">
+        <tr>
+            <td align="left" style="width: 50%;">
+                &copy; {{ date('Y') }} {{ config('app.url') }} - All rights reserved.
+            </td>
+            <td align="right" style="width: 50%;">
+                Eficiencia y Enfoque a la Logística.
+            </td>
+        </tr>
+
+    </table>
+</div>
 </body>
 </html>
