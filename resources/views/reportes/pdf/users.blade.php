@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Proveedores {{date('m-d-Y',strtotime($hoy))}}</title>
+    <title>Usuarios {{date('m-d-Y',strtotime($hoy))}}</title>
 
     <style type="text/css">
         @page {
@@ -87,7 +87,7 @@ Fecha: {{date('d-m-Y',strtotime($hoy))}}
 
             </td>
             <td align="center">
-                <img src="{{asset('img/pdf-cover.png')}}" alt="Logo" width="100" class="logo"/>
+                <img src="{{asset('img/pdf-cover.png')}}" alt="Logo" width="100px" class="logo"/>
             </td>
             <td align="right" style="width: 40%;">
 
@@ -109,27 +109,33 @@ Fecha: {{date('d-m-Y',strtotime($hoy))}}
 <br/>
 
 <div class="invoice">
-    <h3>Proveedores</h3>
+    <h3>Usuarios</h3>
     <table width="100%">
         <thead class="table-header">
-            <tr>
-                <th>Cod. Proveedor</th>
-                <th>Nombre</th>
-                <th>NIT</th>
-                <th>Direccion</th>
-                <th>Email</th>
-                <th>Telefono</th>
-            </tr>
+        <tr>
+            <th>Cod. Usuario</th>
+            <th>Nombre de Usuario</th>
+            <th>Email</th>
+            <th>Tipo de Usuario</th>
+            <th>Estado</th>
+        </tr>
         </thead>
         <tbody>
-        @foreach($providers as $provider)
-            <tr style="margin-left: 10px!important;">
-                <td>{{$provider->id_provider}}</td>
-                <td>{{$provider->provider_name}}</td>
-                <td>{{$provider->nit}}</td>
-                <td>{{$provider->provider_address}}</td>
-                <td>{{$provider->email}}</td>
-                <td>{{$provider->telefono}}</td>
+        @foreach($users as $user)
+            <tr style="margin-left: 5px!important;">
+                <td>{{$user->id}}</td>
+                <td>{{$user->username}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->tipoUsuario}}</td>
+                @if($user->is_active == 1)
+                    <td style="color: #38c172!important">
+                        ACTIVO
+                    </td>
+                @else
+                    <td style="color: #FF5252!important">
+                        INACTIVO
+                    </td>
+                @endif
             </tr>
         @endforeach
     </table>
