@@ -40,6 +40,9 @@ Route::get('/mantenimiento/proximos','Mantenimientos\MantenimientoController@pro
 Route::get('/mantenimiento/estatus','Mantenimientos\MantenimientoController@estatus')->name('mantenimiento.estatus');
 
 Route::post('/mantenimiento/modal/','Mantenimientos\MantenimientoController@returnModalMantenimiento')->name('modal.mantenimiento');
+Route::post('/mantenimiento/modal/programar','Mantenimientos\MantenimientoController@returnModalMantenimientoProgramar')->name('modal.mantenimientoProgramar');
+Route::post('/mantenimiento/modal/producto','Mantenimientos\MantenimientoController@returnModalMantenimientoProducto')->name('modal.mantenimientoProducto');
+Route::post('/mantenimiento/modal/retirar','Mantenimientos\MantenimientoController@returnModalMantenimientoRetirar')->name('modal.mantenimientoRetirar');
 /* Mantenimiento */
 
 

@@ -2,14 +2,12 @@
 
 @section('main-content')
 
-
+    <h1>Mantenimiento</h1>
 
 
     <ul class="nav nav-tabs">
 
-        <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="{{ route('mantenimiento') }}">Mantenimiento</a>
-        </li>
+
 
         <li class="nav-item">
             <a class="nav-link" href="{{ route('mantenimiento.estatus') }}">Estatus de Mantenimiento</a>
@@ -24,9 +22,21 @@
         <li>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary">Ingresar Producto</button>
-                <button type="button" class="btn btn-outline-info">Buscar Producto</button>
-                <button type="button" class="btn btn-outline-danger">Retirar Producto</button>
+
+
+                    <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-secondary" onclick="openModal3()" >
+                        Ingresar Producto
+                    </button>
+                    <div class="modal3">
+                    </div>
+                    <button type="button" class="btn btn-outline-info">Buscar Producto</button>
+                <!-- Button trigger modal -->
+                    <button type="button" class="btn btn-outline-danger" onclick="openModal4()" >
+                      Retirar Producto
+                    </button>
+                    <div class="modal4">
+                    </div>
             </div>
 
         </li>
@@ -70,5 +80,28 @@
 
         </tbody>
     </table>
-
+    <script>
+        function openModal3(){
+            $.ajax({
+                type: 'POST',
+                url: '{{route('modal.mantenimientoProducto')}}',
+                data: {'_token': '{{csrf_token()}}'},
+                success: function (data){
+                    $('.modal3').html(data);
+                    $('#modalMantenimientoProducto').modal();
+                }
+            });
+        }
+        function openModal4(){
+            $.ajax({
+                type: 'POST',
+                url: '{{route('modal.mantenimientoRetirar')}}',
+                data: {'_token': '{{csrf_token()}}'},
+                success: function (data){
+                    $('.modal4').html(data);
+                    $('#modalMantenimientoRetirar').modal();
+                }
+            });
+        }
+    </script>
 @endsection

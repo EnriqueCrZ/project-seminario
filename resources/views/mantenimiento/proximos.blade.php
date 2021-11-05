@@ -2,11 +2,10 @@
 
 @section('main-content')
 
+    <h1>Mantenimiento</h1>
+
     <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="{{ route('mantenimiento') }}">Mantenimiento</a>
-        </li>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ route('mantenimiento.estatus') }}">Estatus de Mantenimiento</a>
         </li>
@@ -19,7 +18,13 @@
         <li>
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary">Programar Mantenimiento</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-secondary" onclick="openModal()" >
+                    Programar Mantenimiento
+                </button>
+                <div class="modal2">
+                </div>
+
                 <button type="button" class="btn btn-outline-info">Buscar Mantenimiento</button>
 
             </div>
@@ -44,8 +49,7 @@
             <td>126456</td>
             <td>796bbh</td>
             <td>asdgs</td>
-            <td>Willy Mallorga/td>
-            <td>25/08/2021</td>
+            <td>Willy Mallorga</td>
             <td><button type="button" class="btn btn-outline-danger">Cancelar Mantenimiento</button></td>
         </tr>
         <tr>
@@ -53,12 +57,25 @@
             <td>12342</td>
             <td>799fbb</td>
             <td>asdgs</td>
-            <td>Francopaskdn/td>
-            <td>30/08/2021</td>
+            <td>Francopaskdn</td>
             <td><button type="button" class="btn btn-outline-danger">Cancelar Mantenimiento</button></td>
         </tr>
 
 
         </tbody>
     </table>
+    <script>
+        function openModal(){
+            $.ajax({
+                type: 'POST',
+                url: '{{route('modal.mantenimientoProgramar')}}',
+                data: {'_token': '{{csrf_token()}}'},
+                success: function (data){
+                    $('.modal2').html(data);
+                    $('#modalMantenimientoProgramar').modal();
+                }
+            });
+        }
+    </script>
+
 @endsection

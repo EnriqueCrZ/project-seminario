@@ -2,12 +2,9 @@
 
 @section('main-content')
 
-
+    <h1>Mantenimiento</h1>
     <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="{{ route('mantenimiento') }}">Mantenimiento</a>
-        </li>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link active" href="{{ route('mantenimiento.estatus') }}">Estatus de Mantenimiento</a>
         </li>
@@ -20,7 +17,12 @@
         <li>
            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary">Crear Orden de Trabajo</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-secondary" onclick="openModal()" >
+                    Crear Orden De Trabajo
+                </button>
+                <div class="modal1">
+                </div>
                 <button type="button" class="btn btn-outline-info">Buscar Orden de Trabajo</button>
 
             </div>
@@ -29,13 +31,7 @@
 
     </ul>
 
-    <!-- Button trigger modal -->
-    <button type="button" class="btn btn-primary" onclick="openModal()" >
-        Launch demo modal
-    </button>
-    <div class="modal1">
 
-    </div>
 
     <table class="table">
         <thead>
@@ -92,4 +88,5 @@
             });
         }
     </script>
+
 @endsection
