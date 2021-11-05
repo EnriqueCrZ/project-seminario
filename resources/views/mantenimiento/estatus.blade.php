@@ -2,12 +2,9 @@
 
 @section('main-content')
 
-
+    <h1>Mantenimiento</h1>
     <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="{{ route('mantenimiento') }}">Mantenimiento</a>
-        </li>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link active" href="{{ route('mantenimiento.estatus') }}">Estatus de Mantenimiento</a>
         </li>
@@ -18,15 +15,22 @@
             <a class="nav-link" href="{{ route('mantenimiento.insumo') }}">Insumos y Respuestos</a>
         </li>
         <li>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <div class="btn-group">
-                <button type="button" class="btn btn-outline-secondary">Crear Orden de Trabajo</button>
+                <!-- Button trigger modal -->
+                <button type="button" class="btn btn-outline-secondary" onclick="openModal()" >
+                    Crear Orden De Trabajo
+                </button>
+                <div class="modal1">
+                </div>
                 <button type="button" class="btn btn-outline-info">Buscar Orden de Trabajo</button>
 
             </div>
 
         </li>
+
     </ul>
+
 
 
     <table class="table">
@@ -52,7 +56,7 @@
             <td>NTI</td>
             <td>Calle Marginal</td>
             <td>admin@admin.com</td>
-            <td>Telefono</td>
+            <td>Preventivo</td>
             <td>activo</td>
             <td><button type="button" class="btn btn-outline-danger">Finalizar</button></td>
         </tr>
@@ -63,7 +67,7 @@
             <td>NTI</td>
             <td>Calle Marginal3</td>
             <td>admin122@admin.com</td>
-            <td>Telefono</td>
+            <td>Correctivo</td>
             <td>activo</td>
             <td><button type="button" class="btn btn-outline-danger">Finalizar</button></td>
         </tr>
@@ -71,4 +75,18 @@
 
         </tbody>
     </table>
+    <script>
+        function openModal(){
+            $.ajax({
+                type: 'POST',
+                url: '{{route('modal.mantenimiento')}}',
+                data: {'_token': '{{csrf_token()}}'},
+                success: function (data){
+                    $('.modal1').html(data);
+                    $('#modalMantenimiento').modal();
+                }
+            });
+        }
+    </script>
+
 @endsection

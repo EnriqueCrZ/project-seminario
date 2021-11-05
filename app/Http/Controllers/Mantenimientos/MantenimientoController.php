@@ -42,4 +42,17 @@ class MantenimientoController extends Controller
     public function estatus(){
         return view('mantenimiento.estatus');
     }
+
+    public function returnModalMantenimiento(){
+        return view('mantenimiento.modal.mantenimiento');
+    }
+    public function returnModalMantenimientoProgramar(){
+        return view('mantenimiento.modal.mantenimientoProgramar');
+    }
+    public function returnModalMantenimientoProducto(){
+        return view('mantenimiento.modal.mantenimientoProducto');
+    }
+    public function returnModalMantenimientoRetirar(){
+        return view('mantenimiento.modal.mantenimientoRetirar');
+    }
 }

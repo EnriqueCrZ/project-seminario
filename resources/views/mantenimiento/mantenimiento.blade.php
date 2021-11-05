@@ -2,13 +2,10 @@
 
 @section('main-content')
 
-
+    <h1>Mantenimiento</h1>
 
     <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="{{ route('mantenimiento') }}">Mantenimiento</a>
-        </li>
-        </li>
+
         <li class="nav-item">
             <a class="nav-link" href="{{ route('mantenimiento.estatus') }}">Estatus de Mantenimiento</a>
         </li>
