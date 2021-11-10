@@ -96,6 +96,20 @@
                 <span>{{ __('Proveedor') }}</span>
             </a>
         </li>
+        <!-- Nav Item - Pilot -->
+        <li class="nav-item {{ Nav::isRoute('piloto') }}">
+            <a class="nav-link" href="{{ route('piloto') }}">
+                <i class="far fa-address-book"></i>
+                <span>{{ __('Piloto') }}</span>
+            </a>
+        </li>
+        <!-- Nav Item - Location -->
+        <li class="nav-item {{ Nav::isRoute('ubicacion') }}">
+            <a class="nav-link" href="{{ route('ubicacion') }}">
+                <i class="far fa-address-book"></i>
+                <span>{{ __('ubicacion') }}</span>
+            </a>
+        </li>
 
         <!-- Nav Item - Mantenimiento -->
         <li class="nav-item {{ Nav::isRoute('mantenimiento') }}">
