@@ -32,6 +32,25 @@ Route::post('/proveedores/update/{proveedor}', 'Proveedores\ProveedorController@
 Route::post('/proveedores/delete/', 'Proveedores\ProveedorController@destroy')->name('proveedor.delete');
 /* Proveedor */
 
+/* Piloto */
+Route::get('/piloto', 'Pilotos\PilotoController@index')->name('piloto');
+Route::get('/piloto/create', 'Pilotos\PilotoController@create')->name('piloto.crear');
+Route::post('/piloto/store', 'Pilotos\PilotoController@save')->name('piloto.store');
+
+Route::get('/piloto/edit/{pilot}', 'Pilotos\PilotosController@edit')->name('piloto.edit');
+Route::post('/piloto/update/{pilot}', 'Pilotos\PilotoController@update')->name('piloto.update');
+Route::post('/piloto/delete/', 'Pilotos\PilotoControllers@destroy')->name('piloto.delete');
+/* Piloto */
+
+/* Ubicacion */
+Route::get('/ubicacion', 'Ubicacion\UbicacionController@index')->name('ubicacion');
+Route::get('/ubicacion/create', 'Ubicacion\UbicacionController@create')->name('ubicacion.crear');
+Route::post('/ubicacion/store', 'Ubicacion\UbicacionController@save')->name('ubicacion.store');
+
+Route::get('/ubicacion/edit/{location}', 'Ubicacion\UbicacionController@edit')->name('ubicacion.edit');
+Route::post('/ubicacion/update/{location}', 'Ubicacion\UbicacionController@update')->name('ubicacion.update');
+Route::post('/ubicacion/delete/', 'Ubicacion\UbicacionControllers@destroy')->name('ubicacion.delete');
+/* Ubicacion */
 
 /* Mantenimiento */
 Route::get('/mantenimiento', 'Mantenimientos\MantenimientoController@index')->name('mantenimiento');
