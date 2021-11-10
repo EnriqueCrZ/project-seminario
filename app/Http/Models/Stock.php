@@ -10,7 +10,7 @@ class Stock extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id_stock','created_at','updated_at','inventory_id_inventory'
+        'id_stock','created_at','updated_at','inventory_id_inventory','user_id'
     ];
 
     protected $primaryKey = 'id_stock';
