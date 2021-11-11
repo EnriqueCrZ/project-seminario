@@ -24,6 +24,7 @@
             <th scope="col">Plataforma / Gondola</th>
             <th scope="col">Fecha de Asignación</th>
             <th scope="col">Tipo de Trabajo</th>
+            <th scope="col">Descripción</th>
             <th colspan="2">Opciones</th>
         </tr>
     </thead>
@@ -38,7 +39,8 @@
             <th>Plataforma GT-008</th>
             <th>01/01/2021</th>
             <th>Movimiento en Terminal Portuaria</th>
-            <th><a href="{{route('vehiculo.edit')}}"><button type="button" class="btn btn-outline-info">Modificar</button></th></a>
+            <th>Movimiento en Terminal Portuaria</th>
+            <th><a href="#"><button type="button" class="btn btn-outline-info">Modificar</button></th></a>
             <th><button type="button" class="btn btn-outline-danger">Eliminar</button></th>
         </tr>
     </tbody>

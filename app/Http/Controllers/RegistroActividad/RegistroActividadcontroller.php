@@ -29,4 +29,13 @@ class RegistroActividadcontroller extends Controller{
         return view('registroactividad.registroactividad');
         
     }
+
+public function create(){
+    return view('registroactividad.create');
+}
+
+public function edit(){
+    return view('registroactividad.edit');
+}
+
 }
