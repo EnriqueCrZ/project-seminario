@@ -58,7 +58,10 @@ Route::post('/vehiculos/delete/', 'Vehiculos\Vehiculoscontroller@destroy')->name
 //Registro de Actividades
 
 
-Route::get('/registroactividad', 'registroactividad\RegistroActividadcontroller@index')->name('registroactividad');
+
+Route::get('/registroactividad', 'RegistroActividad\RegistroActividadcontroller@index')->name('registroactividad');
+Route::get('/registroactividad/create', 'RegistroActividad\RegistroActividadcontroller@create')->name('registroactividad.crear');
+Route::get('/registroactividad/edit', 'RegistroActividad\RegistroActividadcontroller@edit') ->name('registroactividad.edit');
 
 Route::get('/about', function () {
     return view('about');
