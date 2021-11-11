@@ -50,7 +50,7 @@ class PilotoController extends Controller
     public function edit($id)
     {
         $pilot = Pilot::where('id_pilot',$id)->first();
-        return view('pilot.edit', compact('pilot'));
+        return view('piloto.edit', compact('pilot'));
     }
 
     public function update(Request $request,$id){
@@ -58,10 +58,10 @@ class PilotoController extends Controller
         $pilot->complete_name = $request->complete_name;
         $pilot->license = $request->license;
         $pilot->phone_number = $request->phone_number;
-        $pilot->adress = $request->adress;
+        $pilot->address = $request->address;
         $pilot->save();
 
-        return redirect()->route('pilot')->with('status', 'Piloto actualizado!');
+        return redirect()->route('piloto')->with('status', 'Piloto actualizado!');
     }
 
     public function destroy(Request $request)

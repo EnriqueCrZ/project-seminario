@@ -28,20 +28,11 @@
                     @csrf
                     @method('POST')
                     <div class="form-group">
-                        <label for="id_pilot">Codigo de Piloto</label>
-                        <input class="form-control String" type="text" name="id_pilot" id="id_pilot"
-                               value="{{old('id_pilot',$pilot->id_pilot}}" maxlength="60"
-                               required="required">
-                        @if($errors->has('id_pilot'))
-                            <p class="text-danger">{{$errors->first('id_pilot')}}</p>
-                        @endif
-                    </div>
-                    <div class="form-group">
                         <label for="complete_name">Nombre de Piloto</label>
                         <input class="form-control String" type="text" name="complete_name" id="complete_name"
-                               value="{{old('provider_name',$pilot->complete_name}}" maxlength="60"
+                               value="{{old('complete_name',$pilot->complete_name)}}" maxlength="60"
                                required="required">
-                        @if($errors->has('nombre'))
+                        @if($errors->has('complete_name'))
                             <p class="text-danger">{{$errors->first('complete_name')}}</p>
                         @endif
                     </div>
@@ -49,10 +40,10 @@
                     <div class="form-group">
                         <label for="license">Licencia</label>
                         <input class="form-control String" type="text" name="license" id="license"
-                               value="{{old('nit',$provider->nit)}}" required="required"
+                               value="{{old('license',$pilot->license)}}" required="required"
                         >
                         @if($errors->has('license'))
-                            <p class="text-danger">{{$errors->first('lisence')}}</p>
+                            <p class="text-danger">{{$errors->first('license')}}</p>
                         @endif
                     </div>
                     <div class="form-group">
@@ -65,7 +56,7 @@
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="provider_address">Dirección</label>
+                        <label for="address">Dirección</label>
                         <input class="form-control String" type="text" name="address" id="address"
                                value="{{old('address',$pilot->address)}}" required="required"
                         >
