@@ -5,6 +5,20 @@
 @endsection
 
 @section('main-content')
+    <style>
+        #mapPicker {
+            display: block;
+            position: absolute;
+            top:0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+    </style>
     <div class="container">
         <div class="card">
 
@@ -30,15 +44,7 @@
                 @endif
                 <form action="{{route('ubicacion.store')}}" method="POST" novalidate>
                     @csrf
-                    <div class="form-group">
-                        <label for="id_location">Codigo de la Ubicacion</label>
-                        <input class="form-control String" type="text" name="id_location" id="id_location"
-                               value="{{old('id_location')}}" maxlength="60"
-                               required="required">
-                        @if($errors->has('id_location'))
-                            <p class="text-danger">{{$errors->first('id_location')}}</p>
-                        @endif
-                    </div>
+
                     <div class="form-group">
                         <label for="name">Nombre de la Ubicacion</label>
                         <input class="form-control String" type="text" name="name" id="name"
@@ -48,24 +54,14 @@
                             <p class="text-danger">{{$errors->first('name')}}</p>
                         @endif
                     </div>
-                    <div class="form-group">
-                        <label for="latitude">Latitud</label>
-                        <input class="form-control String" type="text" name="latitude" id="latitude"
-                               value="{{old('latitude')}}" required="required"
-                        >
-                        @if($errors->has('latitude'))
-                            <p class="text-danger">{{$errors->first('latitude')}}</p>
-                        @endif
-                    </div>
+                    <input type="hidden" name="latitude" id="latitude">
+                    <input type="hidden" name="longitude" id="longitude">
+                    <div class="card shadow mb-4">
+                        <div class="card-body" style="height: 500px; width: 100%; position: relative">
+                            <div id="mapPicker">
 
-                    <div class="form-group">
-                        <label for="longitude">Longitud</label>
-                        <input class="form-control String" type="text" name="longitude" id="longitude"
-                               value="{{old('longitude')}}" required="required"
-                        >
-                        @if($errors->has('longitude'))
-                            <p class="text-danger">{{$errors->first('longitude')}}</p>
-                        @endif
+                            </div>
+                        </div>
                     </div>
 
                     <div class="btn-group">

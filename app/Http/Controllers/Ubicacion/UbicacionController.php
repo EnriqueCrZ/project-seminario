@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Ubicacion;
 
 use App\Http\Models\Provider;
 use App\User;
+use App\Http\Models\Location;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,13 +29,14 @@ class UbicacionController extends Controller
      */
     public function index()
     {
-        $location = Location::paginate(20);
+        $locations = Location::paginate(20);
 
-        return view('ubicacion.ubicacion', compact('logitud'));
+        return view('ubicacion.ubicacion', compact('locations'));
     }
 
     public function create(){
-        return view('ubicacion.create');
+        $allowMapsAPI = true;
+        return view('ubicacion.create', compact('allowMapsAPI'));
     }
 
     public function save(Request $request){
@@ -42,7 +44,7 @@ class UbicacionController extends Controller
         $location->name = $request->name;
         $location->latitude = $request->latitude;
         $location->longitude = $request->longitude;
-        $location->user_id_user = Auth::user()->id;
+        $location->user_id = Auth::user()->id;
         $location->save();
 
         return redirect()->route('ubicacion')->with('status', 'Ubicacion agregada!');
