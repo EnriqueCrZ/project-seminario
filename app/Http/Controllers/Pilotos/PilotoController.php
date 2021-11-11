@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Pilotos;
 
 use App\Http\Models\Provider;
-use App\User;
+use App\Http\Models\Pilot;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -28,9 +28,9 @@ class PilotoController extends Controller
      */
     public function index()
     {
-        $pilot = Pilot::paginate(20);
+        $pilots = Pilot::paginate(20);
 
-        return view('piloto.piloto', compact('pilot'));
+        return view('piloto.piloto', compact('pilots'));
     }
 
     public function create(){
@@ -42,8 +42,7 @@ class PilotoController extends Controller
         $pilot->complete_name = $request->complete_name;
         $pilot->license = $request->license;
         $pilot->phone_number = $request->phone_number;
-        $pilot->adress = $request->adress;
-        $pilot->user_id_user = Auth::user()->id;
+        $pilot->address = $request->address;
         $pilot->save();
 
         return redirect()->route('piloto')->with('status', 'Piloto agregado!');
@@ -51,7 +50,7 @@ class PilotoController extends Controller
     public function edit($id)
     {
         $pilot = Pilot::where('id_pilot',$id)->first();
-        return view('pilot.edit', compact('pilot'));
+        return view('piloto.edit', compact('pilot'));
     }
 
     public function update(Request $request,$id){
@@ -59,10 +58,10 @@ class PilotoController extends Controller
         $pilot->complete_name = $request->complete_name;
         $pilot->license = $request->license;
         $pilot->phone_number = $request->phone_number;
-        $pilot->adress = $request->adress;
+        $pilot->address = $request->address;
         $pilot->save();
 
-        return redirect()->route('pilot')->with('status', 'Piloto actualizado!');
+        return redirect()->route('piloto')->with('status', 'Piloto actualizado!');
     }
 
     public function destroy(Request $request)

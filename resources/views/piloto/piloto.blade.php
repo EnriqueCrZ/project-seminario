@@ -21,7 +21,7 @@
      </a>
  </div>
     <table class="table text-center table-responsive-md">
-        @if(count($pilot))
+        @if(count($pilots))
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -35,16 +35,16 @@
         </thead>
         @endif
         <tbody>
-        @forelse($pilot as $pilot)
+        @forelse($pilots as $pilot)
         <tr class="font-weight-bold">
             <th>{{$loop->iteration}}</th>
             <td>{{$pilot->id_pilot}}</td>
-            <td>{{$pilot->provider_name}}</td>
+            <td>{{$pilot->complete_name}}</td>
             <td>{{$pilot->license}}</td>
             <td>{{$pilot->address}}</td>
             <td>{{$pilot->phone_number}}</td>
             <td>
-                <a href="{{route('pilot.edit',['piloto'=>$pilot] )}}">
+                <a href="/piloto/edit/{{$pilot->id_pilot}}">
                     <button type="button" class="btn btn-outline-info"><i class="fas fa-edit"></i></button>
                 </a>
                 <button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{$pilot->id_pilot}})"><i class="fas fa-trash"></i></button>
@@ -56,7 +56,7 @@
         </tbody>
     </table>
     <div class="row ml-1 d-flex justify-content-center">
-        {{ $pilot->links() }}
+        {{ $pilots->links() }}
     </div>
     <script>
         function confirmDelete(id){

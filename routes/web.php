@@ -37,7 +37,7 @@ Route::get('/piloto', 'Pilotos\PilotoController@index')->name('piloto');
 Route::get('/piloto/create', 'Pilotos\PilotoController@create')->name('piloto.crear');
 Route::post('/piloto/store', 'Pilotos\PilotoController@save')->name('piloto.store');
 
-Route::get('/piloto/edit/{pilot}', 'Pilotos\PilotosController@edit')->name('piloto.edit');
+Route::get('/piloto/edit/{pilot}', 'Pilotos\PilotoController@edit')->name('piloto.edit');
 Route::post('/piloto/update/{pilot}', 'Pilotos\PilotoController@update')->name('piloto.update');
 Route::post('/piloto/delete/', 'Pilotos\PilotoControllers@destroy')->name('piloto.delete');
 /* Piloto */

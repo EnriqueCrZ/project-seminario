@@ -21,7 +21,7 @@
      </a>
  </div>
     <table class="table text-center table-responsive-md">
-        @if(count($location))
+        @if(count($locations))
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -34,18 +34,18 @@
         </thead>
         @endif
         <tbody>
-        @forelse($location as $location)
+        @forelse($locations as $location)
         <tr class="font-weight-bold">
             <th>{{$loop->iteration}}</th>
-            <td>{{$latitud->id_location}}</td>
-            <td>{{$latitud->name}}</td>
-            <td>{{$latitud->latitude}}</td>
-            <td>{{$latitud->longitude}}</td>
+            <td>{{$location->id_location}}</td>
+            <td>{{$location->name}}</td>
+            <td>{{$location->latitude}}</td>
+            <td>{{$location->longitude}}</td>
             <td>
-                <a href="{{route('ubicacion.edit',['ubicacion'=>$location] )}}">
+                <a href="{{route('ubicacion.edit',['location'=>$location] )}}">
                     <button type="button" class="btn btn-outline-info"><i class="fas fa-edit"></i></button>
                 </a>
-                <button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{$location>id_location}})"><i class="fas fa-trash"></i></button>
+                <button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{$location->id_location}})"><i class="fas fa-trash"></i></button>
             </td>
         </tr>
         @empty
@@ -54,7 +54,7 @@
         </tbody>
     </table>
     <div class="row ml-1 d-flex justify-content-center">
-        {{ $location->links() }}
+        {{ $locations->links() }}
     </div>
     <script>
         function confirmDelete(id){
