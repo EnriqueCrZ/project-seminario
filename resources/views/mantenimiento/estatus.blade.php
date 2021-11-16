@@ -1,8 +1,10 @@
 @extends('layouts.admin')
-
+@section('titulo')
+    Mantenimiento
+@endsection
 @section('main-content')
 
-    <h1>Mantenimiento</h1>
+
     <ul class="nav nav-tabs">
 
         <li class="nav-item">
