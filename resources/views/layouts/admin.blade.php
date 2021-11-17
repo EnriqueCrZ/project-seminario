@@ -118,6 +118,13 @@
                 <span>{{ __('Mantenimiento') }}</span>
             </a>
         </li>
+        <!-- Nav Item - Inventario-->
+        <li class="nav-item {{ Nav::isRoute('inventario') }}">
+            <a class="nav-link" href="{{ route('inventario') }}">
+                <i class="far fa-address-book"></i>
+                <span>{{ __('Inventario') }}</span>
+            </a>
+        </li>
         <!-- Nav Item - Vehiculos -->
         <li class="nav-item {{ Nav::isRoute('vehiculo') }}">
             <a class="nav-link" href="{{ route('vehiculo') }}">
