@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Colors\RandomColor;
 use App\Http\Controllers\Localizacion\LocationController;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -29,6 +31,22 @@ class HomeController extends Controller
     }
 
     private static function getHome(){
+
+        $colors = [];
+
+        $activities = DB::select('SELECT a.*, origin.name as origin_name, origin.latitude as origin_latitude, origin.longitude as origin_longitude,
+                        destiny.name as destiny_name, destiny.latitude as destiny_latitude, destiny.longitude as destiny_longitude,
+                        pilot.complete_name as pilot_name, pilot.license as pilot_license,
+                        vehicle.vehicle_code as vehicle_code, vehicle.brand as vehicle_brand, vehicle.line as vehicle_line, vehicle.model as vehicle_model, vehicle.plate as vehicle_plate,
+                        platform.vehicle_code as platform_code, platform.brand as platform_brand, platform.line as platform_line, platform.model as platform_model, platform.plate as platform_plate
+                            FROM seminario.activity as a
+                                join (seminario.location as origin, seminario.location as destiny, seminario.pilot as pilot, seminario.vehicle as vehicle, seminario.vehicle as platform)
+		                            ON (origin.id_location = a.origin AND destiny.id_location = a.destiny AND pilot.id_pilot = a.pilot_id_pilot AND vehicle.id_vehicle = a.vehicle AND platform.id_vehicle = a.platform)',array(1));
+
+        foreach($activities as $activity){
+            $colors[$activity->id_activity] = RandomColor::one();
+        }
+
         $users = User::count();
 
         $widget = [
@@ -37,7 +55,7 @@ class HomeController extends Controller
         ];
         $locations = LocationController::getLocations();
 
-        return view('home', compact('widget','locations'));
+        return view('home', compact('widget','locations','activities','colors'));
     }
 
     private static function getGmaps(){

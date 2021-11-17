@@ -7,11 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 class Activity extends Model
 {
     protected $table= 'activity';
-    public $timestamps = false;
 
     protected $fillable = [
         'id_activity','description','origin','destiny','pilot_id_pilot',
-        'vehicle','platform'
+        'vehicle','platform','crated_at','updated_at'
     ];
 
     protected $primaryKey = 'id_activity';
