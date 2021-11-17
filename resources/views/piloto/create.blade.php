@@ -51,7 +51,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="license">NIT</label>
+                        <label for="license">Licencia</label>
                         <input class="form-control String" type="text" name="license" id="license"
                                value="{{old('license')}}" required="required"
                         >

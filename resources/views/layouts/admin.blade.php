@@ -115,15 +115,22 @@
         <li class="nav-item {{ Nav::isRoute('ubicacion') }}">
             <a class="nav-link" href="{{ route('ubicacion') }}">
                 <i class="fas fa-map-marked"></i>
-                <span>{{ __('ubicacion') }}</span>
+                <span>{{ __('Ubicacion') }}</span>
             </a>
         </li>
 
         <!-- Nav Item - Mantenimiento -->
-        <li class="nav-item {{ Nav::isRoute('mantenimiento') }}">
-            <a class="nav-link" href="{{ route('mantenimiento') }}">
+        <li class="nav-item {{ Nav::isRoute('mantenimiento.estatus') }}">
+            <a class="nav-link" href="{{ route('mantenimiento.estatus') }}">
                 <i class="far fa-address-book"></i>
                 <span>{{ __('Mantenimiento') }}</span>
+            </a>
+        </li>
+        <!-- Nav Item - Inventario-->
+        <li class="nav-item {{ Nav::isRoute('inventario') }}">
+            <a class="nav-link" href="{{ route('inventario') }}">
+                <i class="far fa-address-book"></i>
+                <span>{{ __('Inventario') }}</span>
             </a>
         </li>
         <!-- Nav Item - Vehiculos -->

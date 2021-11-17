@@ -32,6 +32,16 @@ Route::post('/proveedores/update/{proveedor}', 'Proveedores\ProveedorController@
 Route::post('/proveedores/delete/', 'Proveedores\ProveedorController@destroy')->name('proveedor.delete');
 /* Proveedor */
 
+/* Inventario */
+Route::get('/inventario', 'Inventario\InventarioController@index')->name('inventario');
+Route::get('/inventario/create', 'Inventario\InventarioController@create')->name('inventario.crear');
+Route::post('/inventario/store', 'Inventario\InventarioController@save')->name('inventario.store');
+
+Route::get('/inventario/edit/{inventory}', 'Inventario\InventarioController@edit')->name('inventario.edit');
+Route::post('/inventario/update/{inventory}', 'Inventario\InventarioController@update')->name('inventario.update');
+Route::post('/inventario/delete/', 'Inventario\InventarioController@destroy')->name('inventario.delete');
+/* Inventario */
+
 /* Piloto */
 Route::get('/piloto', 'Pilotos\PilotoController@index')->name('piloto');
 Route::get('/piloto/create', 'Pilotos\PilotoController@create')->name('piloto.crear');
