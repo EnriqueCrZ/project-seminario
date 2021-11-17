@@ -80,6 +80,7 @@ Route::post('/vehiculos/delete/', 'Vehiculos\Vehiculoscontroller@destroy')->name
 
 Route::get('/registroactividad', 'RegistroActividad\RegistroActividadcontroller@index')->name('registroactividad');
 Route::get('/registroactividad/create', 'RegistroActividad\RegistroActividadcontroller@create')->name('registroactividad.crear');
+Route::post('/registroactividad/store', 'RegistroActividad\RegistroActividadcontroller@store')->name('registroactividad.guardar');
 Route::get('/registroactividad/edit', 'RegistroActividad\RegistroActividadcontroller@edit') ->name('registroactividad.edit');
 
 Route::get('/about', function () {

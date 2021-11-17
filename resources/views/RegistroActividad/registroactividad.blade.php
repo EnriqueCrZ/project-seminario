@@ -7,7 +7,7 @@
 @section('main-content')
 
 <div>
-     <a href="{{route('vehiculo.crear')}}">
+     <a href="{{route('registroactividad.crear')}}">
          <button type="button" class="btn btn-primary">Crear nuevo trabajo</button>
      </a>
  </div><br>
@@ -19,8 +19,8 @@
             <th scope="col">Placa</th>
             <th scope="col">Codigo del Vehiculo</th>
             <th scope="col">Vehiculo</th>
-            <th scope="col">Piloto</th>  
-            <th scope="col">Placa Plataforma / Gondola</th>          
+            <th scope="col">Piloto</th>
+            <th scope="col">Placa Plataforma / Gondola</th>
             <th scope="col">Plataforma / Gondola</th>
             <th scope="col">Fecha de Asignación</th>
             <th scope="col">Tipo de Trabajo</th>
@@ -40,7 +40,7 @@
             <th>01/01/2021</th>
             <th>Movimiento en Terminal Portuaria</th>
             <th>Movimiento en Terminal Portuaria</th>
-            <th><a href="#"><button type="button" class="btn btn-outline-info">Modificar</button></th></a>
+            <th><a href="#"><button type="button" class="btn btn-outline-info">Modificar</button></a></th>
             <th><button type="button" class="btn btn-outline-danger">Eliminar</button></th>
         </tr>
     </tbody>

@@ -89,6 +89,14 @@
 
         <hr class="sidebar-divider">
 
+        <!-- Nav Item - Actividades -->
+        <li class="nav-item {{ Nav::isRoute('registroactividades') }}">
+            <a class="nav-link" href="{{ route('registroactividad') }}">
+                <i class="fas fa-route"></i>
+                <span>{{ __('Registro de Actividades') }}</span>
+            </a>
+        </li>
+
         <!-- Nav Item - Providers -->
         <li class="nav-item {{ Nav::isRoute('proveedor') }}">
             <a class="nav-link" href="{{ route('proveedor') }}">
