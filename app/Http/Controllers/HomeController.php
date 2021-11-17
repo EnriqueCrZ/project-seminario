@@ -41,7 +41,8 @@ class HomeController extends Controller
                         platform.vehicle_code as platform_code, platform.brand as platform_brand, platform.line as platform_line, platform.model as platform_model, platform.plate as platform_plate
                             FROM seminario.activity as a
                                 join (seminario.location as origin, seminario.location as destiny, seminario.pilot as pilot, seminario.vehicle as vehicle, seminario.vehicle as platform)
-		                            ON (origin.id_location = a.origin AND destiny.id_location = a.destiny AND pilot.id_pilot = a.pilot_id_pilot AND vehicle.id_vehicle = a.vehicle AND platform.id_vehicle = a.platform)',array(1));
+		                            ON (origin.id_location = a.origin AND destiny.id_location = a.destiny AND pilot.id_pilot = a.pilot_id_pilot AND vehicle.id_vehicle = a.vehicle AND platform.id_vehicle = a.platform)
+		                            WHERE a.status = 1',array(1));
 
         foreach($activities as $activity){
             $colors[$activity->id_activity] = RandomColor::one();

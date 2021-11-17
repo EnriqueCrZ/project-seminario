@@ -82,6 +82,7 @@ Route::get('/registroactividad', 'RegistroActividad\RegistroActividadcontroller@
 Route::get('/registroactividad/create', 'RegistroActividad\RegistroActividadcontroller@create')->name('registroactividad.crear');
 Route::post('/registroactividad/store', 'RegistroActividad\RegistroActividadcontroller@store')->name('registroactividad.guardar');
 Route::get('/registroactividad/edit', 'RegistroActividad\RegistroActividadcontroller@edit') ->name('registroactividad.edit');
+Route::post('/admin/registroactividad/status','RegistroActividad\RegistroActividadcontroller@changeStatus')->name('actividad.estatus');
 
 Route::get('/about', function () {
     return view('about');

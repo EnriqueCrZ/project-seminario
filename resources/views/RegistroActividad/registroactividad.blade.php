@@ -44,7 +44,11 @@
             <th>{{$activity->origin_name}} - {{$activity->destiny_name}}</th>
             <th>{{$activity->description}}</th>
             <th><a href="#"><button type="button" class="btn btn-outline-info">Modificar</button></a></th>
-            <th><button type="button" class="btn btn-outline-danger">Eliminar</button></th>
+            @if($activity->status == 1)
+                <th><button type="button" class="btn btn-outline-danger" onclick="changeStatus('{{$activity->id_activity}}',0)">Desactivar</button></th>
+            @else
+                <th><button type="button" class="btn btn-outline-danger" onclick="changeStatus('{{$activity->id_activity}}',1)">Activar</button></th>
+            @endif
         </tr>
         @empty
         <p>No hay Actividades</p>
@@ -52,5 +56,34 @@
         </tbody>
     </table>
 </div>
-
+<script>
+    function changeStatus(id,status){
+        let message = status === 1 ? 'activar' : 'desactivar';
+        Swal.fire({
+            title: '¿Quieres '+message+' la actividad?',
+            showDenyButton: true,
+            showCancelButton: false,
+            confirmButtonText: 'Si',
+            denyButtonText: `No`,
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    type: 'POST',
+                    url: '{{route('actividad.estatus')}}',
+                    data: { "_token":'{{csrf_token()}}',"id":id,"status":status},
+                    success:function(data){
+                        if(data){
+                            Swal.fire('Actualizando...', '', 'success');
+                            location.reload();
+                        }else{
+                            Swal.fire('Ocurrio un problema.', '', 'danger')
+                        }
+                    }
+                });
+            } else if (result.isDenied) {
+                Swal.fire('Operación Cancelada', '', 'info')
+            }
+        })
+    }
+</script>
 @endsection

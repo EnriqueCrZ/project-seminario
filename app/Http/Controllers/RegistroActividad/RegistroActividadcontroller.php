@@ -6,6 +6,7 @@ use App\Http\Models\Activity;
 use App\Http\Models\Location;
 use App\Http\Models\Pilot;
 use App\Http\Models\Vehicle;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -64,6 +65,7 @@ class RegistroActividadcontroller extends Controller
         $activity->pilot_id_pilot = $request->get('piloto');
         $activity->vehicle = $request->get('vehiculo');
         $activity->platform = $request->get('plataforma');
+        $activity->status = 1;
         $activity->save();
 
         return redirect()->route('registroactividad')->with('status', 'Actividad Agregada!');
@@ -74,4 +76,14 @@ class RegistroActividadcontroller extends Controller
         return view('registroactividad.edit');
     }
 
+    public function changeStatus(Request $request){
+        try {
+            $activity = Activity::find($request->id);
+            $activity->status = $request->status;
+            $activity->save();
+            return true;
+        }catch (QueryException $exception){
+            return $exception;
+        }
+    }
 }
