@@ -108,7 +108,7 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table text-center table-bordered">
-                            @if(count($activities))
+                            @if(count($activitiesCollection))
                                 <thead>
                                 <tr>
                                     <th scope="col" class="align-middle">#Guia</th>
@@ -122,7 +122,7 @@
                                 </thead>
                             @endif
                             <tbody>
-                            @forelse($activities as $activity)
+                            @forelse($activitiesCollection as $activity)
                                 <tr class="font-weight-bold">
                                     <th>{{$activity->id_activity}}</th>
                                     <th>{{$activity->description}}</th>
