@@ -62,7 +62,7 @@
                     <div class="form-group">
                         <label for="phone_number">Telefono</label>
                         <input class="form-control String" type="text" name="phone_number" id="phone_number"
-                               value="{{old('phone_number')}}" required="required"
+                               value="{{old('phone_number')}}" required="required" onkeydown="return check(event)"
                         >
                         @if($errors->has('phone_number'))
                             <p class="text-danger">{{$errors->first('phone_number')}}</p>
@@ -76,5 +76,19 @@
             </div>
         </div>
     </div>
+    <script>
+        function check(e) {
+            tecla = (document.all) ? e.keyCode : e.which;
 
+            //Tecla de retroceso para borrar, siempre la permite
+            if (tecla == 8) {
+                return true;
+            }
+
+            // Patron de entrada, en este caso solo acepta numeros y letras
+            patron = /[0-9.]/;
+            tecla_final = String.fromCharCode(tecla);
+            return patron.test(tecla_final);
+        };
+    </script>
 @endsection
