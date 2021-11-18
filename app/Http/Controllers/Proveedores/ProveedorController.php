@@ -8,6 +8,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class ProveedorController extends Controller
 {
@@ -38,6 +39,21 @@ class ProveedorController extends Controller
     }
 
     public function save(Request $request){
+        $validator = Validator::make($request->all(),[
+            'provider_name' => 'required|string|max:75',
+            'provider_address' => 'required|string|max:125|',
+            'email' => 'required|email|max:75',
+            'nit' => 'required|string|max:20',
+            'telefono' => 'required|int|max:45'
+        ]);
+        $validator->getTranslator()->setLocale('es');
+
+        if($validator->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $proveedor = new Provider();
         $proveedor->provider_name = $request->provider_name;
         $proveedor->provider_address = $request->provider_address;

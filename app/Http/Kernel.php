@@ -3,6 +3,9 @@
 namespace App\Http;
 
 use App\Http\Middleware\AdminToken;
+use App\Http\Middleware\UserControlToken;
+use App\Http\Middleware\UserMantToken;
+use App\Http\Middleware\UserWarehouseToken;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -64,5 +67,8 @@ class Kernel extends HttpKernel
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'admin'=> AdminToken::class,
+        'control' => UserControlToken::class,
+        'inventory'=>UserWarehouseToken::class,
+        'mante'=>UserMantToken::class,
     ];
 }
