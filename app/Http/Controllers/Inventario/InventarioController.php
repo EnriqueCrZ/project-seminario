@@ -10,6 +10,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class InventarioController extends Controller
 {
@@ -43,6 +44,23 @@ class InventarioController extends Controller
     }
 
     public function save(Request $request){
+        $validator = Validator::make($request->all(),[
+            'product_code' => 'required',
+            'spare_part' => 'required',
+            'provider_address' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
+            'provider_id_provider' => 'required',
+        ]);
+        $validator->getTranslator()->setLocale('es');
+
+        if($validator->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        };
+
         $inventory = new Inventory();
         $inventory->spare_part = $request->spare_part;
         $inventory->product_code= $request->product_code;
@@ -73,6 +91,22 @@ class InventarioController extends Controller
     }
 
     public function update(Request $request,$id){
+        $validator = Validator::make($request->all(),[
+            'product_code' => 'required',
+            'spare_part' => 'required',
+            'provider_address' => 'required',
+            'price' => 'required',
+            'stock' => 'required',
+            'provider_id_provider' => 'required',
+        ]);
+        $validator->getTranslator()->setLocale('es');
+
+        if($validator->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        };
         $inventory = Inventory::where('id_inventory',$id)->first();
         $inventory->spare_part = $request->spare_part;
         $inventory->product_code= $request->product_code;
