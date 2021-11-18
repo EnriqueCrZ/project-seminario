@@ -38,7 +38,7 @@ class RegistroActividadcontroller extends Controller
                             FROM seminario.activity as a
                                 join (seminario.location as origin, seminario.location as destiny, seminario.pilot as pilot, seminario.vehicle as vehicle, seminario.vehicle as platform)
 		                            ON (origin.id_location = a.origin AND destiny.id_location = a.destiny AND pilot.id_pilot = a.pilot_id_pilot AND vehicle.id_vehicle = a.vehicle AND platform.id_vehicle = a.platform)',array(1));
-        return view('Registroactividad.registroactividad', compact('activities'));
+        return view('RegistroActividad.registroactividad', compact('activities'));
 
     }
 
@@ -52,7 +52,7 @@ class RegistroActividadcontroller extends Controller
             ->get();
         $pilots = Pilot::all();
 
-        return view('Registroactividad.create', compact('locations', 'vehicles', 'platforms', 'pilots'));
+        return view('RegistroActividad.create', compact('locations', 'vehicles', 'platforms', 'pilots'));
     }
 
     public function store(Request $request)
