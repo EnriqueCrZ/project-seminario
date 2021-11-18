@@ -16,3 +16,7 @@ function verificarInactividadUsuario($username)
     $state = User::where('email', $username)->value('is_active');
     return $state != 1;
 }
+
+function getActiveUserType(){
+    return \Illuminate\Support\Facades\Auth::user()->user_type_id_user_type;
+}

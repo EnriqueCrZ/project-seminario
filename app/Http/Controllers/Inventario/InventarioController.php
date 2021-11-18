@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Inventario;
 
 use App\Http\Models\Inventory;
 use App\Http\Models\Provider;
+use App\Http\Models\Stock;
 use App\User;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
@@ -29,42 +30,62 @@ class InventarioController extends Controller
      */
     public function index()
     {
-        $inventory = Inventory::paginate(20);
+        $inventories = Inventory::join('provider','provider.id_provider','inventory.provider_id_provider')
+            ->join('stock','stock.inventory_id_inventory','inventory.id_inventory')
+            ->paginate(20);
 
-        return view('inventario.inventario', compact('inventory'));
+        return view('inventario.inventario', compact('inventories'));
     }
 
     public function create(){
-        return view('inventario.create');
+        $providers = Provider::all();
+        return view('inventario.create',compact('providers'));
     }
 
     public function save(Request $request){
         $inventory = new Inventory();
-        $inventory->spire_part = $request->spire_part;
+        $inventory->spare_part = $request->spare_part;
         $inventory->product_code= $request->product_code;
         $inventory->price = $request->price;
         $inventory->branch = $request->branch;
 
         $inventory->user_id_user = Auth::user()->id;
+        $inventory->provider_id_provider = $request->provider_id_provider;
         $inventory->save();
+
+        $stock = new Stock();
+        $stock->quantity = $request->stock;
+        $stock->inventory_id_inventory = $inventory->id_inventory;
+        $stock->user_id = Auth::user()->id;
+        $stock->warehouse = '';
+        $stock->save();
 
         return redirect()->route('inventario')->with('status', 'Producto agregado!');
     }
     public function edit($id)
     {
-        $inventory = Inventory::where('id_provider',$id)->first();
-        return view('inventario.edit', compact('inventario'));
+        $providers = Provider::all();
+        $inventory = Inventory::where('id_inventory',$id)
+                ->join('provider','provider.id_provider','inventory.provider_id_provider')
+                ->join('stock','stock.inventory_id_inventory','inventory.id_inventory')
+                ->first();
+        return view('inventario.edit', compact('inventory','providers'));
     }
 
     public function update(Request $request,$id){
         $inventory = Inventory::where('id_inventory',$id)->first();
-        $inventory->spire_part = $request->spire_part;
+        $inventory->spare_part = $request->spare_part;
         $inventory->product_code= $request->product_code;
         $inventory->price = $request->price;
         $inventory->branch = $request->branch;
+        $inventory->provider_id_provider = $request->provider_id_provider;
         $inventory->save();
 
-        return redirect()->route('inventory')->with('status', 'Proveedor actualizado!');
+        $stock = Stock::where('inventory_id_inventory',$id)->first();
+        $stock->quantity = $request->stock;
+        $stock->save();
+
+        return redirect()->route('inventario')->with('status', 'Producto actualizado!');
     }
 
     public function destroy(Request $request)

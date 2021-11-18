@@ -76,16 +76,19 @@
         <li class="nav-item {{ Nav::isRoute('profile') }}">
             <a class="nav-link" href="{{ route('profile') }}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>{{ __('Profile') }}</span>
+                <span>{{ __('Perfil') }}</span>
             </a>
         </li>
-        <!-- Nav Item - Usuarios -->
-        <li class="nav-item {{ Nav::isRoute('usuarios') }}">
-            <a class="nav-link" href="{{ route('usuarios') }}">
-                <i class="fas fa-users"></i>
-                <span>{{ __('Usuarios') }}</span>
-            </a>
-        </li>
+        @if(Auth::user()->user_type_id_user_type == 1)
+            <!-- Nav Item - Usuarios -->
+                <li class="nav-item {{ Nav::isRoute('usuarios') }}">
+                    <a class="nav-link" href="{{ route('usuarios') }}">
+                        <i class="fas fa-users"></i>
+                        <span>{{ __('Usuarios') }}</span>
+                    </a>
+                </li>
+            @endif
+
 
         <hr class="sidebar-divider">
 
@@ -129,7 +132,7 @@
         <!-- Nav Item - Inventario-->
         <li class="nav-item {{ Nav::isRoute('inventario') }}">
             <a class="nav-link" href="{{ route('inventario') }}">
-                <i class="far fa-address-book"></i>
+                <i class="fas fa-boxes"></i>
                 <span>{{ __('Inventario') }}</span>
             </a>
         </li>
@@ -141,13 +144,13 @@
             </a>
         </li>
 
-        <!-- Nav Item - About -->
+       {{-- <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('About') }}</span>
             </a>
-        </li>
+        </li>--}}
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
@@ -219,7 +222,7 @@
                         </div>
                     </li>--}}
 
-                    <!-- Nav Item - Alerts -->
+                    {{--<!-- Nav Item - Alerts -->
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
@@ -322,7 +325,7 @@
                             </a>
                             <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                         </div>
-                    </li>
+                    </li>--}}
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -420,5 +423,6 @@
 @yield('scripts')
 @include('localizacion.asyncApi')
 @include('localizacion.script')
+
 </body>
 </html>

@@ -66,23 +66,23 @@
                             <p class="text-danger">{{$errors->first('price')}}</p>
                         @endif
                     </div>
-                   {{--
-                   ARREGLAR AQUI NO SE COMO HACER LA CONEXION A STOCK :(((
                    <div class="form-group">
-                        <label for="telefono">Telefono</label>
-                        <input class="form-control String" type="text" name="telefono" id="telefono"
-                               value="{{old('telefono')}}" required="required"
+                        <label for="stock">Stock</label>
+                        <input class="form-control String" type="text" name="stock" id="stock"
+                               value="{{old('stock')}}" required="required" onkeydown="return check(event)"
                         >
-                        @if($errors->has('telefono'))
-                            <p class="text-danger">{{$errors->first('telefono')}}</p>
+                        @if($errors->has('stock'))
+                            <p class="text-danger">{{$errors->first('stock')}}</p>
                         @endif
                     </div>
-                    --}}
                     <div class="form-group">
                         <label for="provider_id_provider">Proveedor</label>
-                        <input class="form-control String" type="text" name="provider_id_provider" id="provider_id_provider"
-                               value="{{old('provider_id_provider')}}" required="required"
-                        >
+                        <select class="form-control" name="provider_id_provider" id="provider_id_provider">
+                            @foreach($providers as $provider)
+                                <option
+                                    value="{{$provider->id_provider}}">{{$provider->provider_name}}</option>
+                            @endforeach
+                        </select>
                         @if($errors->has('provider_id_provider'))
                             <p class="text-danger">{{$errors->first('provider_id_provider')}}</p>
                         @endif
@@ -96,5 +96,19 @@
             </div>
         </div>
     </div>
+    <script>
+            function check(e) {
+                tecla = (document.all) ? e.keyCode : e.which;
 
+                //Tecla de retroceso para borrar, siempre la permite
+                if (tecla == 8) {
+                    return true;
+                }
+
+                // Patron de entrada, en este caso solo acepta numeros y letras
+                patron = /[0-9.]/;
+                tecla_final = String.fromCharCode(tecla);
+                return patron.test(tecla_final);
+            };
+    </script>
 @endsection

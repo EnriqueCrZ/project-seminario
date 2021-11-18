@@ -1,14 +1,12 @@
 @extends('layouts.admin')
 
+@section('titulo')
+    Editar Producto
+@endsection
+
 @section('main-content')
     <div class="container">
         <div class="card">
-
-            <div class="card-header">
-                <div class="col-md-12 text-secondary d-flex justify-content-center text-blue text-uppercase">
-                    <h3>Editar proveedor</h3>
-                </div>
-            </div>
             <div class="card-body">
 
                 @if ( ! $errors->isEmpty() )
@@ -24,12 +22,12 @@
                 @else
                     <p>&nbsp;</p>
                 @endif
-                <form action="{{route('proveedor.update',$inventory->id_inventory)}}" method="POST" novalidate>
+                <form action="{{route('inventario.update',$inventory->id_inventory)}}" method="POST" novalidate>
                     @csrf
                     @method('POST')
 
                     <div class="form-group">
-                        <label for="provider_name">Codigo del Producto</label>
+                        <label for="provider_name">Código del Producto</label>
                         <input class="form-control String" type="text" name="product_code" id="product_code"
                                value="{{old('product_code',$inventory->product_code)}}" maxlength="60"
                                required="required">
@@ -46,36 +44,47 @@
                             <p class="text-danger">{{$errors->first('spare_part')}}</p>
                         @endif
                     </div>
+
                     <div class="form-group">
-                        <label for="price">Email</label>
+                        <label for="branch">Marca</label>
+                        <input class="form-control String" type="text" name="branch" id="branch"
+                               value="{{old('branch',$inventory->branch)}}" required="required"
+                        >
+                        @if($errors->has('branch'))
+                            <p class="text-danger">{{$errors->first('branch')}}</p>
+                        @endif
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">Precio</label>
                         <input class="form-control String" type="text" name="price" id="price"
-                               value="{{old('email',$inventory->price)}}" required="required"
+                               value="{{old('price',$inventory->price)}}" required="required"
                         >
                         @if($errors->has('price'))
                             <p class="text-danger">{{$errors->first('price')}}</p>
                         @endif
                     </div>
                     <div class="form-group">
-                        <label for="branch">Marca</label>
-                        <input class="form-control String" type="text" name="branch" id="branch"
-                               value="{{old('branch',$provider->nit)}}" required="required"
+                        <label for="stock">Stock</label>
+                        <input class="form-control String" type="text" name="stock" id="stock"
+                               value="{{old('stock',$inventory->quantity)}}" required="required"
                         >
-                        @if($errors->has('branch'))
-                            <p class="text-danger">{{$errors->first('branch')}}</p>
+                        @if($errors->has('price'))
+                            <p class="text-danger">{{$errors->first('price')}}</p>
                         @endif
                     </div>
-                   {{--
-                   Corregir esta partes :(
-                   <div class="form-group">
-                        <label for="stock">Cantidad</label>
-                        <input class="form-control String" type="text" name="telefono" id="telefono"
-                               value="{{old('telefono',$provider->telefono)}}" required="required"
-                        >
-                        @if($errors->has('telefono'))
-                            <p class="text-danger">{{$errors->first('telefono')}}</p>
+                    <div class="form-group">
+                        <label for="provider_id_provider">Proveedor</label>
+                        <select class="form-control" name="provider_id_provider" id="provider_id_provider">
+                            @foreach($providers as $provider)
+                                <option
+                                    value="{{$provider->id_provider}}" @if($provider->id_provider == $inventory->provider_id_provider) selected @endif>{{$provider->provider_name}}</option>
+                            @endforeach
+                        </select>
+                        @if($errors->has('provider_id_provider'))
+                            <p class="text-danger">{{$errors->first('provider_id_provider')}}</p>
                         @endif
                     </div>
-                    --}}
                     <div class="btn-group">
                         <button class="btn btn-outline-info" type="submit">Actualizar</button>
                         <a href="{{ url()->previous() }}" class="btn btn-outline-danger">Regresar</a>
