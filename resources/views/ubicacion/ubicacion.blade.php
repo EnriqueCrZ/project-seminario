@@ -42,9 +42,9 @@
             <td>{{$location->latitude}}</td>
             <td>{{$location->longitude}}</td>
             <td>
-                <a href="{{route('ubicacion.edit',['location'=>$location] )}}">
+                {{--<a href="{{route('ubicacion.edit',['location'=>$location] )}}">
                     <button type="button" class="btn btn-outline-info"><i class="fas fa-edit"></i></button>
-                </a>
+                </a>--}}
                 <button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{$location->id_location}})"><i class="fas fa-trash"></i></button>
             </td>
         </tr>

@@ -38,7 +38,7 @@ class HomeController extends Controller
 
         $colors = [];
 
-        $activities = DB::select('SELECT a.*, origin.name as origin_name, origin.latitude as origin_latitude, origin.longitude as origin_longitude,
+        $activitiesCollection = DB::select('SELECT a.*, origin.name as origin_name, origin.latitude as origin_latitude, origin.longitude as origin_longitude,
                         destiny.name as destiny_name, destiny.latitude as destiny_latitude, destiny.longitude as destiny_longitude,
                         pilot.complete_name as pilot_name, pilot.license as pilot_license,
                         vehicle.vehicle_code as vehicle_code, vehicle.brand as vehicle_brand, vehicle.line as vehicle_line, vehicle.model as vehicle_model, vehicle.plate as vehicle_plate,
@@ -48,7 +48,7 @@ class HomeController extends Controller
 		                            ON (origin.id_location = a.origin AND destiny.id_location = a.destiny AND pilot.id_pilot = a.pilot_id_pilot AND vehicle.id_vehicle = a.vehicle AND platform.id_vehicle = a.platform)
 		                            WHERE a.status = 1',array(1));
 
-        foreach($activities as $activity){
+        foreach($activitiesCollection as $activity){
             $colors[$activity->id_activity] = RandomColor::one();
         }
 
@@ -63,7 +63,7 @@ class HomeController extends Controller
         ];
         $locations = LocationController::getLocations();
 
-        return view('home', compact('widget','locations','activities','colors'));
+        return view('home', compact('widget','locations','activitiesCollection','colors'));
     }
 
     private static function getGmaps(){

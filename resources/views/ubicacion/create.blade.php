@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 
 @section('titulo')
-    Crear Piloto
+    Crear Ubicacion
 @endsection
 
 @section('main-content')

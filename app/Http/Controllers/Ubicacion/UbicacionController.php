@@ -9,6 +9,7 @@ use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class UbicacionController extends Controller
 {
@@ -40,6 +41,22 @@ class UbicacionController extends Controller
     }
 
     public function save(Request $request){
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|string|max:75',
+            'latitude' => 'required',
+            'longitude' => 'required',
+        ],[
+            'latitude.required' => 'Por favor seleccione una ubicación en el mapa',
+            'longitude.required' => 'Por favor seleccione una ubicación en el mapa'
+        ]);
+        $validator->getTranslator()->setLocale('es');
+
+        if($validator->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $location = new Location();
         $location->name = $request->name;
         $location->latitude = $request->latitude;

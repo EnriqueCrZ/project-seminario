@@ -1,14 +1,13 @@
 @extends('layouts.admin')
 
+@section('titulo')
+    Editar Ubicacion {{$location->name}}
+@endsection
+
 @section('main-content')
     <div class="container">
         <div class="card">
 
-            <div class="card-header">
-                <div class="col-md-12 text-secondary d-flex justify-content-center text-blue text-uppercase">
-                    <h3>Editar Ubicacion</h3>
-                </div>
-            </div>
             <div class="card-body">
 
                 @if ( ! $errors->isEmpty() )
@@ -28,18 +27,9 @@
                     @csrf
                     @method('POST')
                     <div class="form-group">
-                        <label for="id_pilot">Codigo de Ubicacion</label>
-                        <input class="form-control String" type="text" name="id_location" id="id_location"
-                               value="{{old('id_location',$location->id_location}}" maxlength="60"
-                               required="required">
-                        @if($errors->has('id_location'))
-                            <p class="text-danger">{{$errors->first('id_location')}}</p>
-                        @endif
-                    </div>
-                    <div class="form-group">
                         <label for="complete_name">Nombre de la Ubicacion</label>
                         <input class="form-control String" type="text" name="name" id="name"
-                               value="{{old('name',$location->name}}" maxlength="60"
+                               value="{{old('name',$location->name)}}" maxlength="60"
                                required="required">
                         @if($errors->has('nombre'))
                             <p class="text-danger">{{$errors->first('name')}}</p>

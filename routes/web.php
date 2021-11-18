@@ -72,6 +72,9 @@ Route::post('/mantenimiento/modal/','Mantenimientos\MantenimientoController@retu
 Route::post('/mantenimiento/modal/programar','Mantenimientos\MantenimientoController@returnModalMantenimientoProgramar')->name('modal.mantenimientoProgramar')->middleware('mante');
 Route::post('/mantenimiento/modal/producto','Mantenimientos\MantenimientoController@returnModalMantenimientoProducto')->name('modal.mantenimientoProducto')->middleware('mante');
 Route::post('/mantenimiento/modal/retirar','Mantenimientos\MantenimientoController@returnModalMantenimientoRetirar')->name('modal.mantenimientoRetirar')->middleware('mante');
+
+Route::post('/mantenimiento/modal/save','Mantenimientos\MantenimientoController@saveMantenimiento')->name('mantenimiento.guardar');
+Route::post('/admin/mantenimiento/status','Mantenimientos\MantenimientoController@changeStatus')->name('mantenimiento.status.change');
 /* Mantenimiento */
 
 
