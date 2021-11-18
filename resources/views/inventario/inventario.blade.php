@@ -21,7 +21,7 @@
      </a>
  </div>
     <table class="table text-center table-responsive-md">
-        @if(count($inventory))
+        @if(count($inventories))
         <thead>
         <tr>
             <th scope="col">#</th>
@@ -36,22 +36,21 @@
         </thead>
         @endif
         <tbody>
-        @forelse($inventory as $inventory)
+        @forelse($inventories as $inventory)
         <tr class="font-weight-bold">
             <th>{{$loop->iteration}}</th>
-            <td>{{$inventory->id_inventory}}</td>
             <td>{{$inventory->product_code}}</td>
             <td>{{$inventory->spare_part}}</td>
             <td>{{$inventory->price}}</td>
             <td>{{$inventory->branch}}</td>
-            <td>stock</td>
-            <td>{{$inventory->provider_id_provider}}</td>
+            <td>{{$inventory->quantity}}</td>
+            <td>{{$inventory->provider_name}}</td>
 
             <td>
-                <a href="{{route('$inventory.edit',['inventory'=>$inventory] )}}">
+                <a href="{{route('inventario.edit',['inventory'=>$inventory] )}}">
                     <button type="button" class="btn btn-outline-info"><i class="fas fa-edit"></i></button>
                 </a>
-                <button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{$inventory->id_inventory}})"><i class="fas fa-trash"></i></button>
+                {{--<button type="button" class="btn btn-outline-danger" onclick="confirmDelete({{$inventory->id_inventory}})"><i class="fas fa-trash"></i></button>--}}
             </td>
         </tr>
         @empty
@@ -60,9 +59,9 @@
         </tbody>
     </table>
     <div class="row ml-1 d-flex justify-content-center">
-        {{ $inventory->links() }}
+        {{ $inventories->links() }}
     </div>
-    <script>
+    {{--<script>
         function confirmDelete(id){
             Swal.fire({
                 title: '¿Quieres eliminar el producto?',
@@ -90,5 +89,5 @@
                 }
             })
         }
-    </script>
+    </script>--}}
 @endsection

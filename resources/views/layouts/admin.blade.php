@@ -76,88 +76,99 @@
         <li class="nav-item {{ Nav::isRoute('profile') }}">
             <a class="nav-link" href="{{ route('profile') }}">
                 <i class="fas fa-fw fa-user"></i>
-                <span>{{ __('Profile') }}</span>
+                <span>{{ __('Perfil') }}</span>
             </a>
         </li>
-        <!-- Nav Item - Usuarios -->
-        <li class="nav-item {{ Nav::isRoute('usuarios') }}">
-            <a class="nav-link" href="{{ route('usuarios') }}">
-                <i class="fas fa-users"></i>
-                <span>{{ __('Usuarios') }}</span>
-            </a>
-        </li>
+        @if(getActiveUserType() == 1)
+            <!-- Nav Item - Usuarios -->
+                <li class="nav-item {{ Nav::isRoute('usuarios') }}">
+                    <a class="nav-link" href="{{ route('usuarios') }}">
+                        <i class="fas fa-users"></i>
+                        <span>{{ __('Usuarios') }}</span>
+                    </a>
+                </li>
+            @endif
+
 
         <hr class="sidebar-divider">
 
-        <!-- Nav Item - Actividades -->
-        <li class="nav-item {{ Nav::isRoute('registroactividades') }}">
-            <a class="nav-link" href="{{ route('registroactividad') }}">
-                <i class="fas fa-route"></i>
-                <span>{{ __('Registro de Actividades') }}</span>
-            </a>
-        </li>
+        @if(getActiveUserType() == 1 || getActiveUserType() == 4)
+            <!-- Nav Item - Actividades -->
+                <li class="nav-item {{ Nav::isRoute('registroactividades') }}">
+                    <a class="nav-link" href="{{ route('registroactividad') }}">
+                        <i class="fas fa-route"></i>
+                        <span>{{ __('Registro de Actividades') }}</span>
+                    </a>
+                </li>
 
-        <!-- Nav Item - Providers -->
-        <li class="nav-item {{ Nav::isRoute('proveedor') }}">
-            <a class="nav-link" href="{{ route('proveedor') }}">
-                <i class="far fa-address-book"></i>
-                <span>{{ __('Proveedor') }}</span>
-            </a>
-        </li>
-        <!-- Nav Item - Pilot -->
-        <li class="nav-item {{ Nav::isRoute('piloto') }}">
-            <a class="nav-link" href="{{ route('piloto') }}">
-                <i class="fas fa-biking"></i>
-                <span>{{ __('Piloto') }}</span>
-            </a>
-        </li>
-        <!-- Nav Item - Location -->
-        <li class="nav-item {{ Nav::isRoute('ubicacion') }}">
-            <a class="nav-link" href="{{ route('ubicacion') }}">
-                <i class="fas fa-map-marked"></i>
-                <span>{{ __('Ubicacion') }}</span>
-            </a>
-        </li>
+                <!-- Nav Item - Providers -->
+                <li class="nav-item {{ Nav::isRoute('proveedor') }}">
+                    <a class="nav-link" href="{{ route('proveedor') }}">
+                        <i class="far fa-address-book"></i>
+                        <span>{{ __('Proveedor') }}</span>
+                    </a>
+                </li>
+                <!-- Nav Item - Pilot -->
+                <li class="nav-item {{ Nav::isRoute('piloto') }}">
+                    <a class="nav-link" href="{{ route('piloto') }}">
+                        <i class="fas fa-biking"></i>
+                        <span>{{ __('Piloto') }}</span>
+                    </a>
+                </li>
+                <!-- Nav Item - Location -->
+                <li class="nav-item {{ Nav::isRoute('ubicacion') }}">
+                    <a class="nav-link" href="{{ route('ubicacion') }}">
+                        <i class="fas fa-map-marked"></i>
+                        <span>{{ __('Ubicacion') }}</span>
+                    </a>
+                </li>
+                <!-- Nav Item - Vehiculos -->
+                <li class="nav-item {{ Nav::isRoute('vehiculo') }}">
+                    <a class="nav-link" href="{{ route('vehiculo') }}">
+                        <i class="fas fa-car"></i>
+                        <span>{{ __('Vehiculo') }}</span>
+                    </a>
+                </li>
+        @endif
 
-        <!-- Nav Item - Mantenimiento -->
-        <li class="nav-item {{ Nav::isRoute('mantenimiento.estatus') }}">
-            <a class="nav-link" href="{{ route('mantenimiento.estatus') }}">
-                <i class="far fa-address-book"></i>
-                <span>{{ __('Mantenimiento') }}</span>
-            </a>
-        </li>
-        <!-- Nav Item - Inventario-->
-        <li class="nav-item {{ Nav::isRoute('inventario') }}">
-            <a class="nav-link" href="{{ route('inventario') }}">
-                <i class="far fa-address-book"></i>
-                <span>{{ __('Inventario') }}</span>
-            </a>
-        </li>
-        <!-- Nav Item - Vehiculos -->
-        <li class="nav-item {{ Nav::isRoute('vehiculo') }}">
-            <a class="nav-link" href="{{ route('vehiculo') }}">
-                <i class="fas fa-car"></i>
-                <span>{{ __('Vehiculo') }}</span>
-            </a>
-        </li>
+        @if(getActiveUserType() == 1 || getActiveUserType() == 2)
+            <!-- Nav Item - Mantenimiento -->
+                <li class="nav-item {{ Nav::isRoute('mantenimiento.estatus') }}">
+                    <a class="nav-link" href="{{ route('mantenimiento.estatus') }}">
+                        <i class="far fa-address-book"></i>
+                        <span>{{ __('Mantenimiento') }}</span>
+                    </a>
+                </li>
+        @endif
+        @if(getActiveUserType() == 1 || getActiveUserType() == 3)
+            <!-- Nav Item - Inventario-->
+                <li class="nav-item {{ Nav::isRoute('inventario') }}">
+                    <a class="nav-link" href="{{ route('inventario') }}">
+                        <i class="fas fa-boxes"></i>
+                        <span>{{ __('Inventario') }}</span>
+                    </a>
+                </li>
+        @endif
 
-        <!-- Nav Item - About -->
+       {{-- <!-- Nav Item - About -->
         <li class="nav-item {{ Nav::isRoute('about') }}">
             <a class="nav-link" href="{{ route('about') }}">
                 <i class="fas fa-fw fa-hands-helping"></i>
                 <span>{{ __('About') }}</span>
             </a>
-        </li>
+        </li>--}}
 
-        <!-- Divider -->
-        <hr class="sidebar-divider d-none d-md-block">
+        @if(getActiveUserType() == 1)
+            <!-- Divider -->
+                <hr class="sidebar-divider d-none d-md-block">
 
-        <li class="nav-item" {{ Nav::isRoute('reporte.index') }}>
-            <a href="{{ route('reporte.index') }}" class="nav-link">
-                <i class="fas fa-file-export"></i>
-                <span>{{ __('Reportes') }}</span>
-            </a>
-        </li>
+                <li class="nav-item" {{ Nav::isRoute('reporte.index') }}>
+                    <a href="{{ route('reporte.index') }}" class="nav-link">
+                        <i class="fas fa-file-export"></i>
+                        <span>{{ __('Reportes') }}</span>
+                    </a>
+                </li>
+        @endif
 
         <!-- Sidebar Toggler (Sidebar) -->
         <div class="text-center d-none d-md-inline">
@@ -219,7 +230,7 @@
                         </div>
                     </li>--}}
 
-                    <!-- Nav Item - Alerts -->
+                    {{--<!-- Nav Item - Alerts -->
                     <li class="nav-item dropdown no-arrow mx-1">
                         <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-bell fa-fw"></i>
@@ -322,7 +333,7 @@
                             </a>
                             <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
                         </div>
-                    </li>
+                    </li>--}}
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -420,5 +431,6 @@
 @yield('scripts')
 @include('localizacion.asyncApi')
 @include('localizacion.script')
+
 </body>
 </html>

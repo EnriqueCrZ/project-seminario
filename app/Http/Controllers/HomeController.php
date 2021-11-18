@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Colors\RandomColor;
 use App\Http\Controllers\Localizacion\LocationController;
+use App\Http\Models\Inventory;
+use App\Http\Models\Pilot;
+use App\Http\Models\Provider;
+use App\Http\Models\Vehicle;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -52,6 +56,9 @@ class HomeController extends Controller
 
         $widget = [
             'users' => $users,
+            'providers'=> Provider::count(),
+            'pilots'=> Pilot::count(),
+            'products'=> Inventory::count()
             //...
         ];
         $locations = LocationController::getLocations();
