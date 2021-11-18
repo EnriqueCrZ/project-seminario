@@ -44,12 +44,6 @@ class PilotoController extends Controller
             'address' => 'required|string|max:60',
             'license' => 'required|string|max:45',
             'phone_number' => 'required|max:20|'
-        ],[
-            'password.min' =>'El campo Contraseña debe tener al menos 8 caracteres.',
-            'password.max'=>'El campo Contraseña debe tener como máximo 12 caracteres.',
-            'password_confirmation.min' =>'El campo Confirmar Contraseña debe tener al menos 8 caracteres.',
-            'password_confirmation.max'=>'El campo Confirmar Contraseña debe tener como máximo 12 caracteres.',
-            'password_confirmation.same'=>'Las contraseñas no coinciden.',
         ]);
         $validator->getTranslator()->setLocale('es');
 
@@ -75,6 +69,20 @@ class PilotoController extends Controller
     }
 
     public function update(Request $request,$id){
+        $validator = Validator::make($request->all(),[
+            'complete_name' => 'required|string|max:60',
+            'address' => 'required|string|max:60',
+            'license' => 'required|string|max:45',
+            'phone_number' => 'required|max:20|'
+        ]);
+        $validator->getTranslator()->setLocale('es');
+
+        if($validator->fails()){
+            return redirect()
+                ->back()
+                ->withErrors($validator)
+                ->withInput();
+        }
         $pilot = Pilot::where('id_pilot',$id)->first();
         $pilot->complete_name = $request->complete_name;
         $pilot->license = $request->license;
