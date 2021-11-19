@@ -58,7 +58,7 @@ class UsuarioController extends Controller
         try{
             User::create([
                 'username'=>$request->input('name'),
-                'password'=>Hash::make($request->input('password')),
+                'password'=>str_replace('.','',Hash::make(stripslashes($request->input('password')))),
                 'email'=>$request->input('email'),
                 'is_active'=>1,
                 'user_type_id_user_type'=>$request->input('tipo_usuario')
